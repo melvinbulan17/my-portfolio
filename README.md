@@ -51,9 +51,10 @@ public/
   logos/               M mark for dark and light backgrounds
 tests/
   e2e/                 Playwright tests
+  unit/                Vitest tests, mirroring the src/ folders
 ```
 
-Unit tests sit next to the code they test as `*.test.ts(x)`.
+Unit tests live in `tests/unit/`, in the same folders as the code they test, with a `Test` suffix: `src/components/ui/Button.tsx` is tested by `tests/unit/components/ui/ButtonTest.tsx`.
 
 ## Design tokens
 
@@ -61,4 +62,4 @@ Colours, type sizes, radii and easing live in `src/app/globals.css` as a Tailwin
 
 ## Commits
 
-Commit messages follow [Conventional Commits](https://www.conventionalcommits.org): `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`.
+Commit messages are short and imperative, starting with a capital letter and no trailing period: `Add hero section`, `Fix nav overlap on mobile`. Each feature is built on its own branch and squash-merged into `main` through a pull request.

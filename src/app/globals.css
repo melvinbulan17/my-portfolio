@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Design tokens: colours, type scale, radii and easing. */
 @theme {
   --color-*: initial;
   --color-surface-900: #030d19;

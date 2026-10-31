@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { skillDelay } from "./motion";
+import { skillDelay } from "@/lib/motion";
 
 describe("skillDelay", () => {
   it("staggers down a column and across columns", () => {

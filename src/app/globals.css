@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* Design tokens: colours, type scale, radii and easing. */
+@theme {
+  --color-*: initial;
+  --color-surface-900: #030d19;
+  --color-surface-800: #0b1626;
+  --color-line-dark: #1c2738;
+  --color-line-dark-strong: #56627a;
+  --color-paper: #f5f5f3;
+  --color-text-on-dark: #e6e8ec;
+  --color-text-on-dark-muted: #a3adbd;
+  --color-text-on-paper: #111111;
+  --color-text-on-paper-muted: #5b6170;
+  --color-line-paper: #d9dbe2;
+  --color-accent: #d81b60;
+  --color-accent-bright: #f0437f;
+  --color-tag: #25294a;
+  --color-on-tag: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --radius-*: initial;
+  --radius-full: 9999px;
+
+  --text-display: 64px;
+  --text-display--line-height: 72px;
+  --text-display--font-weight: 700;
+  --text-role: 36px;
+  --text-role--line-height: 44px;
+  --text-role--font-weight: 400;
+  --text-h2: 32px;
+  --text-h2--line-height: 40px;
+  --text-h2--font-weight: 500;
+  --text-h3: 20px;
+  --text-h3--line-height: 28px;
+  --text-h3--font-weight: 600;
+  --text-body: 16px;
+  --text-body--line-height: 26px;
+  --text-label: 14px;
+  --text-label--line-height: 20px;
+  --text-label--font-weight: 600;
+  --text-eyebrow: 13px;
+  --text-eyebrow--line-height: 20px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --font-*: initial;
+  --font-mono: var(--font-fira-code), ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-surface-900 font-mono text-body text-text-on-dark;
+  }
+
+  ::selection {
+    @apply bg-accent text-paper;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-bright);
+    outline-offset: 3px;
+  }
+}

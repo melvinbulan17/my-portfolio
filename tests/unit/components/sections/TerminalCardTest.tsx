@@ -12,6 +12,14 @@ describe("TerminalCard", () => {
     expect(container.firstChild).toHaveAttribute("aria-hidden", "true");
   });
 
+  it("types at the shared per-character speed", () => {
+    const { container } = render(
+      <TerminalCard lines={[{ kind: "cmd", text: "whoami" }]} />,
+    );
+
+    expect(container.firstChild).toHaveStyle({ "--type-char": "24ms" });
+  });
+
   it("gives each command its length and start time", () => {
     const { container } = render(
       <TerminalCard

@@ -6,7 +6,9 @@ export const duration = {
   slow: 0.48,
 } as const;
 
-export const typeChar = 0.038;
+export const typeChar = 0.024;
+
+export const cardTextDelay = 0.08;
 
 export const marqueeLoop = 48;
 

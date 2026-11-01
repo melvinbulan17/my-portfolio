@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
+import { SocialRail } from "@/components/layout/SocialRail";
 import {
   copyrightYear,
   navLinks,
@@ -34,6 +35,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Nav links={navLinks} resumeHref={resumeHref} />
         </header>
         {children}
+        <SocialRail
+          links={socialLinks}
+          className="fixed bottom-0 left-8 z-10"
+        />
         <Footer
           tagline={siteTagline}
           navLinks={navLinks}

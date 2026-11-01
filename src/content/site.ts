@@ -1,4 +1,4 @@
-import type { NavLink, SocialLink } from "@/types/site";
+import type { NavLink, SocialLink, TerminalLine } from "@/types/site";
 
 export const siteOwner = "Melvin S. Bulan";
 
@@ -20,4 +20,42 @@ export const socialLinks: SocialLink[] = [
   { label: "GitHub", href: "https://github.com/melvinbulan17", icon: "github" },
   { label: "LinkedIn", href: "#", icon: "linkedin" },
   { label: "Email", href: "#", icon: "email" },
+];
+
+export const hero = {
+  greeting: "Hi! My name is",
+  name: siteOwner,
+  role: { lead: "I lead it.", emphasis: "I test it." },
+  intro:
+    "I'm the project manager of a PKI web application at a startup, where I also set up software testing from scratch.",
+  primaryAction: { label: "View Works", href: "#work" },
+  secondaryAction: { label: "More about me →", href: "#about" },
+};
+
+export const terminalLines: TerminalLine[] = [
+  { kind: "cmd", text: "whoami" },
+  { kind: "out", text: "project-manager, qa-engineer" },
+  { kind: "gap" },
+  { kind: "cmd", text: "openssl verify -CAfile root.pem career.crt" },
+  {
+    kind: "out",
+    text: "chain: test-engineer → test-manager → project-manager",
+  },
+  { kind: "ok", text: "career.crt: OK", highlight: "OK" },
+  { kind: "gap" },
+  { kind: "cmd", text: "./run-cycle --standard" },
+  {
+    kind: "ok",
+    text: "✓ planned ✓ designed ✓ executed ✓ reported",
+    highlight: "✓",
+  },
+];
+
+export const disciplines = [
+  "Project management",
+  "Software testing",
+  "Test management",
+  "ISTQB lifecycle",
+  "Agile delivery",
+  "PKI",
 ];

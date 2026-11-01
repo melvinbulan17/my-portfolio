@@ -1,9 +1,14 @@
+import { Hero } from "@/components/sections/Hero";
+import { Marquee } from "@/components/sections/Marquee";
+import { disciplines, hero, terminalLines } from "@/content/site";
+
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-2 px-4 text-center">
-      <p className="text-eyebrow text-text-on-dark-muted">Hi! My name is</p>
-      <h1 className="text-h2 md:text-display">Melvin S. Bulan</h1>
-      <p className="text-label text-accent-bright">Site under construction.</p>
+    <main className="flex-1">
+      <div className="flex flex-col lg:min-h-[calc(100dvh-6rem)]">
+        <Hero {...hero} terminalLines={terminalLines} />
+        <Marquee items={disciplines} />
+      </div>
     </main>
   );
 }

@@ -48,6 +48,34 @@
 @theme inline {
   --font-*: initial;
   --font-mono: var(--font-fira-code), ui-monospace, "SFMono-Regular", monospace;
+
+  --animate-type: type calc(var(--n) * 38ms) steps(var(--n), end)
+    calc(var(--at) * 38ms) forwards;
+  --animate-land: land 240ms var(--ease-out-expo) calc(var(--at) * 38ms)
+    forwards;
+  --animate-marquee: marquee 48s linear infinite;
+
+  @keyframes type {
+    from {
+      width: 0;
+    }
+    to {
+      width: calc(var(--n) * 1ch + 3ch);
+    }
+  }
+
+  @keyframes land {
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      translate: -50% 0;
+    }
+  }
 }
 
 @layer base {
@@ -73,4 +101,32 @@
   max-width: 1120px;
   margin-inline: auto;
   padding-inline: --spacing(8);
+}
+
+@utility hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(var(--color-line-dark-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line-dark-strong) 1px, transparent 1px);
+  background-size: --spacing(8) --spacing(8);
+  background-position: -1px -1px;
+  mask-image:
+    radial-gradient(
+      ellipse 45% 60% at 18% 38%,
+      #000 0%,
+      rgb(0 0 0 / 0.55) 40%,
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 30% 40% at 78% 88%,
+      rgb(0 0 0 / 0.35) 0%,
+      transparent 70%
+    );
+
+  @media (width <= 760px) {
+    opacity: 0.25;
+  }
 }

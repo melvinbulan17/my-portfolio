@@ -34,8 +34,21 @@ export function Hero({
             {name}
           </h1>
           <p className="mt-2 text-role max-[760px]:text-[24px]/8">
-            {role.lead}{" "}
-            <em className="text-accent not-italic">{role.emphasis}</em>
+            <span className="inline-block [clip-path:inset(0)]">
+              <span className="inline-block motion-safe:animate-reveal">
+                {role.lead}
+              </span>
+            </span>{" "}
+            <span className="inline-block [clip-path:inset(0)]">
+              <em className="relative inline-block text-accent not-italic [--reveal-at:150ms] motion-safe:animate-reveal">
+                {role.emphasis}
+                <span
+                  aria-hidden="true"
+                  data-underline
+                  className="absolute inset-x-0 bottom-0.5 h-0.5 origin-left bg-accent [--reveal-at:450ms] motion-safe:animate-draw"
+                />
+              </em>
+            </span>
           </p>
           <p className="mt-8 max-w-[520px] text-text-on-dark-muted">{intro}</p>
           <div className="mt-8 flex flex-wrap items-center gap-8">

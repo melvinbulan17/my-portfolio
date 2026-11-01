@@ -4,7 +4,7 @@ export const contact = {
   number: "05.",
   title: "Contact",
   heading: "Let's work together.",
-  lede: "I'm open to new roles and to talking about project delivery or software testing. Send a message and I'll reply by email.",
+  lede: "Have a role, a project, or just an idea? I'm happy to talk. Send a message and I'll get back to you as soon as possible.",
 };
 
 export const contactFields: Array<{

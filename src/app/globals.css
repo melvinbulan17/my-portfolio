@@ -54,6 +54,22 @@
   --animate-land: land 240ms var(--ease-out-expo)
     calc(var(--at) * var(--type-char)) forwards;
   --animate-marquee: marquee 48s linear infinite;
+  --animate-reveal: reveal 480ms var(--ease-out-expo) var(--reveal-at, 0ms)
+    backwards;
+  --animate-draw: draw 350ms var(--ease-out-expo) var(--reveal-at, 0ms)
+    backwards;
+
+  @keyframes reveal {
+    from {
+      translate: 0 105%;
+    }
+  }
+
+  @keyframes draw {
+    from {
+      scale: 0 1;
+    }
+  }
 
   @keyframes type {
     from {

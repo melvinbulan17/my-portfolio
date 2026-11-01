@@ -30,4 +30,31 @@ describe("Hero", () => {
       "#about",
     );
   });
+
+  it("reveals the role line from behind a mask and underlines the emphasis", () => {
+    const { container } = render(
+      <Hero
+        greeting="Hi! My name is"
+        name="Melvin S. Bulan"
+        role={{ lead: "I lead it.", emphasis: "I test it." }}
+        intro="Intro"
+        primaryAction={{ label: "View Works", href: "#work" }}
+        secondaryAction={{ label: "More about me", href: "#about" }}
+        terminalLines={[]}
+      />,
+    );
+
+    const lead = screen.getByText("I lead it.");
+    const emphasis = screen.getByText("I test it.");
+    expect(lead).toHaveClass("motion-safe:animate-reveal");
+    expect(emphasis).toHaveClass("motion-safe:animate-reveal");
+    expect(emphasis).toHaveClass("[--reveal-at:150ms]");
+    expect(lead.parentElement).toHaveClass("[clip-path:inset(0)]");
+    expect(emphasis.parentElement).toHaveClass("[clip-path:inset(0)]");
+    expect(lead.closest("p")).toHaveTextContent("I lead it. I test it.");
+
+    const underline = container.querySelector("[data-underline]");
+    expect(underline).toHaveAttribute("aria-hidden", "true");
+    expect(underline).toHaveClass("motion-safe:animate-draw", "bg-accent");
+  });
 });

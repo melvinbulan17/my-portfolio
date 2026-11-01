@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { Experience } from "@/components/sections/Experience";
-import type { ExperienceJob } from "@/content/experience";
+import { experience, type ExperienceJob } from "@/content/experience";
 
 const jobs: ExperienceJob[] = [
   {
@@ -12,7 +12,7 @@ const jobs: ExperienceJob[] = [
     current: true,
     steps: [
       { title: "Project Manager", current: true },
-      { title: "Software Testing" },
+      { title: "QA Engineer" },
     ],
   },
   {
@@ -70,7 +70,7 @@ describe("Experience", () => {
     const current = screen.getByText("Project Manager").closest("li");
     expect(current).not.toBeNull();
     expect(within(current!).getByText("now")).toBeInTheDocument();
-    expect(screen.getByText("Software Testing")).toBeInTheDocument();
+    expect(screen.getByText("QA Engineer")).toBeInTheDocument();
     expect(screen.getAllByText("now")).toHaveLength(1);
   });
 
@@ -88,5 +88,18 @@ describe("Experience", () => {
     expect(
       screen.getByRole("link", { name: "Full history in the resume (PDF) →" }),
     ).toHaveAttribute("href", "/resume.pdf");
+  });
+
+  it("opens the real history with the current role at LibC", () => {
+    expect(experience[0]).toMatchObject({
+      company: "LibC Technologies SA",
+      title: "Software Engineer",
+      where: "Cebu, Philippines · On-site",
+      current: true,
+      steps: [
+        { title: "Project Manager", current: true },
+        { title: "QA Engineer" },
+      ],
+    });
   });
 });

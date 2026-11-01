@@ -1,6 +1,6 @@
 import { act, render, screen, within } from "@testing-library/react";
 import { Kanban } from "lucide-react";
-import { siGitlab } from "simple-icons";
+import { siConfluence, siGithub, siGitlab, siJira } from "simple-icons";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { Skills } from "@/components/sections/Skills";
@@ -9,7 +9,7 @@ import type { SkillGroup } from "@/types/skills";
 
 const groups: SkillGroup[] = [
   {
-    label: "Project delivery",
+    label: "Project management",
     skills: [{ name: "YouTrack", icon: { set: "lucide", icon: Kanban } }],
   },
   {
@@ -54,7 +54,7 @@ describe("Skills", () => {
     ).toBeInTheDocument();
     expect(
       screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent),
-    ).toEqual(["Project delivery", "Tooling"]);
+    ).toEqual(["Project management", "Tooling"]);
     expect(screen.getAllByRole("list")).toHaveLength(2);
   });
 
@@ -98,15 +98,35 @@ describe("Skills", () => {
     expect(second.style.getPropertyValue("--rise-delay")).toBe("60ms");
   });
 
-  it("keeps the real content to five groups of three to five skills", () => {
-    expect(skillGroups).toHaveLength(5);
+  it("keeps the real content to five groups of four to six skills", () => {
+    expect(skillGroups.map((group) => group.label)).toEqual([
+      "Project management",
+      "Quality & testing",
+      "PKI domain",
+      "Tooling",
+      "Building with",
+    ]);
     for (const group of skillGroups) {
-      expect(group.skills.length).toBeGreaterThanOrEqual(3);
-      expect(group.skills.length).toBeLessThanOrEqual(5);
+      expect(group.skills.length).toBeGreaterThanOrEqual(4);
+      expect(group.skills.length).toBeLessThanOrEqual(6);
     }
     expect(skillGroups[0].skills[0]).toMatchObject({
       name: "YouTrack",
       icon: { set: "lucide" },
     });
+  });
+
+  it("uses brand logos for GitHub, Jira and Confluence", () => {
+    const names = Object.fromEntries(
+      skillGroups.flatMap((group) => group.skills).map((s) => [s.name, s.icon]),
+    );
+
+    expect(names.GitHub).toMatchObject({ set: "simple-icons", icon: siGithub });
+    expect(names.Jira).toMatchObject({ set: "simple-icons", icon: siJira });
+    expect(names.Confluence).toMatchObject({
+      set: "simple-icons",
+      icon: siConfluence,
+    });
+    expect(names["Regression testing"]).toBeUndefined();
   });
 });

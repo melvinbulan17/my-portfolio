@@ -34,7 +34,7 @@ describe("About", () => {
     render(<About {...about} />);
 
     const glance = screen.getByRole("complementary", {
-      name: "// at a glance",
+      name: "// right now",
     });
     const terms = within(glance).getAllByRole("term");
     const definitions = within(glance).getAllByRole("definition");
@@ -42,24 +42,29 @@ describe("About", () => {
     expect(terms).toHaveLength(about.glance.length);
     expect(definitions).toHaveLength(about.glance.length);
     expect(terms[0]).toHaveTextContent("Role");
-    expect(definitions[0]).toHaveTextContent("Project Manager & QA");
+    expect(definitions[0]).toHaveTextContent("Software Engineer (PM & QA)");
+    expect(terms.map((term) => term.textContent)).toEqual([
+      "Role",
+      "Domain",
+      "Since",
+      "Company",
+      "Based in",
+    ]);
   });
 
-  it("mutes placeholder glance values", () => {
-    render(
-      <About
-        story={[]}
-        glanceTitle="// at a glance"
-        glance={[
-          { label: "Since", value: "2022" },
-          { label: "Based in", value: "Lorem ipsum", placeholder: true },
-        ]}
-      />,
-    );
+  it("tells the story in two paragraphs with the key roles in bold", () => {
+    const { container } = render(<About {...about} />);
 
-    expect(screen.getByText("Lorem ipsum")).toHaveClass(
-      "text-text-on-dark-muted",
-    );
-    expect(screen.getByText("2022")).toHaveClass("text-text-on-dark");
+    expect(container.querySelectorAll("p")).toHaveLength(2);
+    expect(
+      Array.from(container.querySelectorAll("strong")).map(
+        (strong) => strong.textContent,
+      ),
+    ).toEqual([
+      "software test engineer",
+      "test manager",
+      "project manager",
+      "PKI (public key infrastructure)",
+    ]);
   });
 });

@@ -16,12 +16,13 @@ export type ExperienceJob = {
 export const experience: ExperienceJob[] = [
   {
     when: "Oct 2025 – Present",
+    where: "Cebu, Philippines · On-site",
     title: "Software Engineer",
-    company: "libC Technologies",
+    company: "LibC Technologies SA",
     current: true,
     steps: [
       { title: "Project Manager", current: true },
-      { title: "Software Testing" },
+      { title: "QA Engineer" },
     ],
   },
   {

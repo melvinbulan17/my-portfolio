@@ -1,6 +1,5 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { AboutContent } from "@/content/about";
-import { cn } from "@/lib/cn";
 
 export type AboutProps = AboutContent;
 
@@ -39,19 +38,10 @@ export function About({ story, glanceTitle, glance }: AboutProps) {
               {glanceTitle}
             </h3>
             <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 text-label font-normal">
-              {glance.map(({ label, value, placeholder }) => (
+              {glance.map(({ label, value }) => (
                 <div key={label} className="contents">
                   <dt className="text-text-on-dark-muted">{label}</dt>
-                  <dd
-                    className={cn(
-                      "m-0",
-                      placeholder
-                        ? "text-text-on-dark-muted"
-                        : "text-text-on-dark",
-                    )}
-                  >
-                    {value}
-                  </dd>
+                  <dd className="m-0 text-text-on-dark">{value}</dd>
                 </div>
               ))}
             </dl>

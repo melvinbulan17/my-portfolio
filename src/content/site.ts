@@ -35,14 +35,14 @@ export const hero = {
   name: siteOwner,
   role: { lead: "I lead it.", emphasis: "I test it." },
   intro:
-    "I'm the project manager of a PKI web application at a startup, where I also set up software testing from scratch.",
+    "Currently a software engineer and project manager on a public key infrastructure (PKI) web application at a Swiss startup.",
   primaryAction: { label: "View Works", href: "#work" },
   secondaryAction: { label: "More about me →", href: "#about" },
 };
 
 export const terminalLines: TerminalLine[] = [
   { kind: "cmd", text: "whoami" },
-  { kind: "out", text: "project-manager, qa-engineer" },
+  { kind: "out", text: "software-engineer, project-manager" },
   { kind: "gap" },
   { kind: "cmd", text: "openssl verify -CAfile root.pem career.crt" },
   {
@@ -60,12 +60,13 @@ export const terminalLines: TerminalLine[] = [
 ];
 
 export const disciplines = [
-  "Project management",
-  "Software testing",
-  "Test management",
-  "ISTQB lifecycle",
-  "Agile delivery",
-  "PKI",
+  "Project Management",
+  "Software Testing",
+  "Test Management",
+  "Public Key Infrastructure",
+  "Agile / Scrum",
+  "Waterfall",
+  "SDLC & STLC",
 ];
 
 export const projects: Project[] = [

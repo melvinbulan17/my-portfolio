@@ -16,7 +16,9 @@ describe("Contact", () => {
     expect(
       screen.getByRole("heading", { level: 2, name: "Let's work together." }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/I'm open to new roles/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Have a role, a project, or just an idea\?/),
+    ).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: "Send message" }),
     ).toBeInTheDocument();

@@ -3,7 +3,6 @@ export type StorySegment = string | { strong: string };
 export type GlanceItem = {
   label: string;
   value: string;
-  placeholder?: boolean;
 };
 
 export type AboutContent = {
@@ -17,28 +16,24 @@ export const about: AboutContent = {
     [
       "I started out as a ",
       { strong: "software test engineer" },
-      ", writing test cases. Later I was made ",
+      ", testing software for Kyocera printers. Later I became ",
       { strong: "test manager" },
-      " for a version-up of an existing project.",
+      " for version-ups of existing products, writing the test plans and running the full test cycle.",
     ],
     [
-      "I then joined a startup as a software engineer, hired to test. There was no testing process yet, so I wrote one: the documents, test case specifications and templates. A few months in, I became ",
+      "I then joined a startup as a software engineer, hired as its main tester. There was no testing process yet, so I built one that follows ISTQB standards: the documents, test case specifications, templates and reports. A few months in, I became ",
       { strong: "project manager" },
       " of a new ",
       { strong: "PKI (public key infrastructure)" },
-      " web application. PKI is the system behind digital certificates, which prove that a website, device or person is who they claim to be.",
-    ],
-    [
-      "I test to ISTQB standards, from planning and test design through to execution and reporting. Now and then I also fix bugs myself.",
+      " web application. PKI is the system behind digital certificates, which prove that a website, device or person is who they claim to be. I set up the project's structure, YouTrack boards and knowledge bases, run sprint meetings and retros, and keep stakeholders updated. I still test, mostly manually with some automation, and help with the code from time to time, so I've seen every step from planning to release.",
     ],
   ],
-  glanceTitle: "// at a glance",
+  glanceTitle: "// right now",
   glance: [
-    { label: "Role", value: "Project Manager & QA" },
-    { label: "Domain", value: "PKI · digital certificates" },
-    { label: "Testing", value: "ISTQB lifecycle" },
-    { label: "Since", value: "2022" },
-    { label: "Based in", value: "Lorem ipsum", placeholder: true },
-    { label: "Open to", value: "Lorem ipsum dolor", placeholder: true },
+    { label: "Role", value: "Software Engineer (PM & QA)" },
+    { label: "Domain", value: "PKI · Digital Certificates" },
+    { label: "Since", value: "Oct 2025" },
+    { label: "Company", value: "LibC Technologies SA" },
+    { label: "Based in", value: "Cebu, Philippines" },
   ],
 };

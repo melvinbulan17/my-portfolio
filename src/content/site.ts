@@ -18,8 +18,16 @@ export const navLinks: NavLink[] = [
 
 export const socialLinks: SocialLink[] = [
   { label: "GitHub", href: "https://github.com/melvinbulan17", icon: "github" },
-  { label: "LinkedIn", href: "#", icon: "linkedin" },
-  { label: "Email", href: "#", icon: "email" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/melvin-bulan-335987220/",
+    icon: "linkedin",
+  },
+  {
+    label: "Email",
+    href: "mailto:melvin.bulan17@gmail.com",
+    icon: "email",
+  },
 ];
 
 export const hero = {

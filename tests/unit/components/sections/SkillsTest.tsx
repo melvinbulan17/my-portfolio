@@ -1,0 +1,112 @@
+import { act, render, screen, within } from "@testing-library/react";
+import { Kanban } from "lucide-react";
+import { siGitlab } from "simple-icons";
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+import { Skills } from "@/components/sections/Skills";
+import { skillGroups } from "@/content/skills";
+import type { SkillGroup } from "@/types/skills";
+
+const groups: SkillGroup[] = [
+  {
+    label: "Project delivery",
+    skills: [{ name: "YouTrack", icon: { set: "lucide", icon: Kanban } }],
+  },
+  {
+    label: "Tooling",
+    skills: [{ name: "GitLab", icon: { set: "simple-icons", icon: siGitlab } }],
+  },
+];
+
+type Callback = (entries: { isIntersecting: boolean }[]) => void;
+
+function mockObserver() {
+  const observers: { callback: Callback; disconnect: () => void }[] = [];
+  vi.stubGlobal(
+    "IntersectionObserver",
+    class {
+      callback: Callback;
+      disconnect = vi.fn();
+      observe = vi.fn();
+      constructor(callback: Callback) {
+        this.callback = callback;
+        observers.push(this);
+      }
+    },
+  );
+  return observers;
+}
+
+const stage = (container: HTMLElement) =>
+  container.querySelector("[data-stage]")?.getAttribute("data-stage");
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
+
+describe("Skills", () => {
+  it("is the #tools section with a heading and one list per group", () => {
+    const { container } = render(<Skills groups={groups} />);
+
+    expect(container.querySelector("section#tools")).not.toBeNull();
+    expect(
+      screen.getByRole("region", { name: "Tools & Skills" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent),
+    ).toEqual(["Project delivery", "Tooling"]);
+    expect(screen.getAllByRole("list")).toHaveLength(2);
+  });
+
+  it("draws a logo or a glyph beside each name and hides it from readers", () => {
+    render(<Skills groups={groups} />);
+
+    const [youtrack, gitlab] = screen.getAllByRole("listitem");
+    expect(youtrack).toHaveTextContent("YouTrack");
+    expect(youtrack.querySelector("svg.lucide-kanban")).not.toBeNull();
+    expect(within(gitlab).getByText("GitLab")).toBeInTheDocument();
+    expect(gitlab.querySelector("path")).toHaveAttribute("d", siGitlab.path);
+    for (const svg of document.querySelectorAll("li svg")) {
+      expect(svg).toHaveAttribute("aria-hidden", "true");
+    }
+  });
+
+  it("stays visible without IntersectionObserver", () => {
+    const { container } = render(<Skills groups={groups} />);
+
+    expect("IntersectionObserver" in window).toBe(false);
+    expect(stage(container)).toBe("rest");
+  });
+
+  it("rises in once when it scrolls into view, staggered by column and row", () => {
+    const observers = mockObserver();
+    const { container } = render(<Skills groups={groups} />);
+
+    expect(stage(container)).toBe("armed");
+
+    act(() => observers[0].callback([{ isIntersecting: false }]));
+    expect(stage(container)).toBe("armed");
+
+    act(() => observers[0].callback([{ isIntersecting: true }]));
+
+    expect(stage(container)).toBe("in");
+    expect(observers[0].disconnect).toHaveBeenCalled();
+    const root = container.querySelector<HTMLElement>("[data-stage]");
+    expect(root?.style.getPropertyValue("--rise-duration")).toBe("480ms");
+    const [first, second] = screen.getAllByRole("listitem");
+    expect(first.style.getPropertyValue("--rise-delay")).toBe("0ms");
+    expect(second.style.getPropertyValue("--rise-delay")).toBe("60ms");
+  });
+
+  it("keeps the real content to five groups of three to five skills", () => {
+    expect(skillGroups).toHaveLength(5);
+    for (const group of skillGroups) {
+      expect(group.skills.length).toBeGreaterThanOrEqual(3);
+      expect(group.skills.length).toBeLessThanOrEqual(5);
+    }
+    expect(skillGroups[0].skills[0]).toMatchObject({
+      name: "YouTrack",
+      icon: { set: "lucide" },
+    });
+  });
+});

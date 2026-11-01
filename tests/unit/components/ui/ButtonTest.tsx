@@ -52,4 +52,16 @@ describe("Button", () => {
     await userEvent.click(screen.getByRole("button", { name: "Sending" }));
     expect(onClick).not.toHaveBeenCalled();
   });
+
+  it("does not pass Link options to a plain anchor", () => {
+    render(
+      <Button href="https://example.com" prefetch={false}>
+        Live site
+      </Button>,
+    );
+
+    expect(screen.getByRole("link", { name: "Live site" })).not.toHaveAttribute(
+      "prefetch",
+    );
+  });
 });

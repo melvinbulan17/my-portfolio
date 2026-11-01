@@ -69,7 +69,6 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
         </ol>
         <TextLink
           href={resumeHref}
-          prefetch={false}
           className="mt-8 ml-8 inline-block min-[761px]:ml-[21rem]"
         >
           Full history in the resume (PDF) →

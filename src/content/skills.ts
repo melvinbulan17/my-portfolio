@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import {
   type SimpleIcon,
-  siClaude,
   siGitea,
   siGitlab,
   siHtml5,
@@ -73,7 +72,6 @@ export const skillGroups: SkillGroup[] = [
       logo("Gitea", siGitea),
       logo("TeamCity", siTeamcity),
       glyph("Zensical docs", BookMarked),
-      logo("Claude", siClaude),
     ],
   },
   {

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  anchorProps,
   isAppRoute,
   isExternal,
   newTabProps,
@@ -42,5 +43,11 @@ describe("links", () => {
     });
     expect(newTabProps("#contact")).toEqual({});
     expect(newTabProps("mailto:me@example.com")).toEqual({});
+  });
+
+  it("drops Next.js Link options before rendering a plain anchor", () => {
+    expect(
+      anchorProps({ href: "/resume.pdf", prefetch: false, scroll: true }),
+    ).toEqual({ href: "/resume.pdf" });
   });
 });

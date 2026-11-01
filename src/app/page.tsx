@@ -1,3 +1,4 @@
+import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { Work } from "@/components/sections/Work";
@@ -11,6 +12,7 @@ export default function Home() {
       </div>
       <Marquee items={disciplines} />
       <Work projects={projects} />
+      <Contact />
     </main>
   );
 }

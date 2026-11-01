@@ -37,7 +37,7 @@ export function Footer({
   year,
 }: FooterProps) {
   return (
-    <footer className="border-t border-line-dark bg-surface-800 pt-16 pb-8 text-label font-normal">
+    <footer className="border-t border-line-dark bg-surface-900 pt-16 pb-8 text-label font-normal">
       <div className="wrap">
         <div className="grid grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 max-[760px]:grid-cols-2">
           <div className="max-[760px]:col-span-full">

@@ -48,7 +48,11 @@ describe("Skills", () => {
   it("is the #tools section with a heading and one list per group", () => {
     const { container } = render(<Skills groups={groups} />);
 
-    expect(container.querySelector("section#tools")).not.toBeNull();
+    expect(container.querySelector("section#tools")).toHaveClass(
+      "bg-surface-900",
+      "border-t",
+      "py-32",
+    );
     expect(
       screen.getByRole("region", { name: "Tools & Skills" }),
     ).toBeInTheDocument();

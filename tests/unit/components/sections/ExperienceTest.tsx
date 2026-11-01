@@ -31,7 +31,11 @@ describe("Experience", () => {
       <Experience jobs={jobs} resumeHref="/resume.pdf" />,
     );
 
-    expect(container.querySelector("section#experience")).not.toBeNull();
+    expect(container.querySelector("section#experience")).toHaveClass(
+      "bg-surface-900",
+      "border-t",
+      "py-32",
+    );
     expect(
       screen.getByRole("heading", { level: 2, name: "Experience" }),
     ).toBeInTheDocument();

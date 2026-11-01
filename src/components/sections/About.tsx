@@ -5,7 +5,10 @@ export type AboutProps = AboutContent;
 
 export function About({ story, glanceTitle, glance }: AboutProps) {
   return (
-    <section id="about" className="bg-surface-900 py-32 max-[760px]:py-16">
+    <section
+      id="about"
+      className="border-t border-line-dark bg-surface-900 py-32 max-[760px]:py-16"
+    >
       <div className="wrap">
         <SectionHeading number="02." title="About" />
         <div className="grid grid-cols-[1.4fr_1fr] gap-16 max-[760px]:grid-cols-1">

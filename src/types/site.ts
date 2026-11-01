@@ -12,3 +12,12 @@ export type TerminalLine =
   | { kind: "out"; text: string }
   | { kind: "ok"; text: string; highlight: string }
   | { kind: "gap" };
+
+export type Project = {
+  kicker: string;
+  title: string;
+  tags: string[];
+  summary: string;
+  image?: { src: string; alt: string };
+  actions: NavLink[];
+};

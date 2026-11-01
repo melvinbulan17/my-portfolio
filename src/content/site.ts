@@ -1,4 +1,4 @@
-import type { NavLink, SocialLink, TerminalLine } from "@/types/site";
+import type { NavLink, Project, SocialLink, TerminalLine } from "@/types/site";
 
 export const siteOwner = "Melvin S. Bulan";
 
@@ -58,4 +58,26 @@ export const disciplines = [
   "ISTQB lifecycle",
   "Agile delivery",
   "PKI",
+];
+
+export const projects: Project[] = [
+  {
+    kicker: "Lorem ipsum · dolor",
+    title: "Lorem Ipsum Platform",
+    tags: ["Lorem", "Ipsum", "Dolor", "Sit amet"],
+    summary:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.",
+    actions: [{ label: "Case study", href: "#" }],
+  },
+  {
+    kicker: "Lorem ipsum",
+    title: "Lorem Ipsum Dolor",
+    tags: ["Lorem", "Ipsum", "Dolor", "Amet"],
+    summary:
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, excepteur sint occaecat.",
+    actions: [
+      { label: "Live site", href: "#" },
+      { label: "View code", href: "#" },
+    ],
+  },
 ];

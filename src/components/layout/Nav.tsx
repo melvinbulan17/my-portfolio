@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
@@ -32,7 +31,7 @@ export function Nav({ links, resumeHref }: NavProps) {
       aria-label="Main"
       className="relative flex h-24 items-center justify-between"
     >
-      <Link href="#top" onClick={close} className="block">
+      <a href="#top" onClick={close} className="block">
         <Image
           src="/logos/m-mark.svg"
           alt="Home"
@@ -40,7 +39,7 @@ export function Nav({ links, resumeHref }: NavProps) {
           height={40}
           priority
         />
-      </Link>
+      </a>
 
       <button
         type="button"
@@ -58,7 +57,7 @@ export function Nav({ links, resumeHref }: NavProps) {
         className={cn(
           "flex items-center gap-8 text-label",
           "max-[760px]:absolute max-[760px]:-inset-x-8 max-[760px]:top-24 max-[760px]:z-10 max-[760px]:flex-col max-[760px]:items-stretch max-[760px]:gap-0",
-          "max-[760px]:border-y max-[760px]:border-line-dark max-[760px]:bg-surface-800 max-[760px]:px-8 max-[760px]:pt-2 max-[760px]:pb-6",
+          "max-[760px]:border-b max-[760px]:border-line-dark max-[760px]:bg-surface-800 max-[760px]:px-8 max-[760px]:pt-2 max-[760px]:pb-6",
           "motion-reduce:transition-none max-[760px]:transition-[opacity,translate,visibility] max-[760px]:duration-240 max-[760px]:ease-out-expo",
           open
             ? "max-[760px]:visible max-[760px]:translate-y-0 max-[760px]:opacity-100"
@@ -67,13 +66,13 @@ export function Nav({ links, resumeHref }: NavProps) {
       >
         {links.map((link) => (
           <li key={link.href}>
-            <Link
+            <a
               href={link.href}
               onClick={close}
               className="transition-colors duration-120 ease-out-expo hover:text-accent-bright max-[760px]:block max-[760px]:border-b max-[760px]:border-line-dark max-[760px]:py-3"
             >
               {link.label}
-            </Link>
+            </a>
           </li>
         ))}
         <li className="max-[760px]:mt-6">

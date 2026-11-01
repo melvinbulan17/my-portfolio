@@ -28,6 +28,26 @@ describe("Nav", () => {
     );
   });
 
+  it("points the logo at the top of the homepage", () => {
+    renderNav();
+
+    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute(
+      "href",
+      "#top",
+    );
+  });
+
+  it("opens the resume in a new tab and keeps section links in place", () => {
+    renderNav();
+
+    const resume = screen.getByRole("link", { name: "Resume" });
+    expect(resume).toHaveAttribute("target", "_blank");
+    expect(resume).toHaveAttribute("rel", "noopener noreferrer");
+    expect(screen.getByRole("link", { name: "Work" })).not.toHaveAttribute(
+      "target",
+    );
+  });
+
   it("toggles the menu and reports it with aria-expanded", async () => {
     const toggle = renderNav();
     expect(toggle).toHaveAttribute("aria-expanded", "false");

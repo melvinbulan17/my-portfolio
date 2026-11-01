@@ -3,6 +3,7 @@ import { Fira_Code } from "next/font/google";
 import "./globals.css";
 
 import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 import { Nav } from "@/components/layout/Nav";
 import { SocialRail } from "@/components/layout/SocialRail";
 import {
@@ -29,11 +30,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${firaCode.variable} antialiased`}>
-      <body className="flex min-h-dvh flex-col">
-        <header id="top" className="wrap w-full">
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${firaCode.variable} antialiased`}
+    >
+      <body className="flex min-h-dvh flex-col pt-24">
+        <Header>
           <Nav links={navLinks} resumeHref={resumeHref} />
-        </header>
+        </Header>
         {children}
         <SocialRail
           links={socialLinks}

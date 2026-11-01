@@ -81,6 +81,11 @@
 @layer base {
   html {
     color-scheme: dark;
+    scroll-padding-top: --spacing(24);
+
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
   }
 
   body {

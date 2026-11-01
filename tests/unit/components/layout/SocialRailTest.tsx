@@ -22,4 +22,15 @@ describe("SocialRail", () => {
       "mailto:me@example.com",
     );
   });
+
+  it("opens profiles in a new tab and email in the same tab", () => {
+    render(<SocialRail links={links} />);
+
+    const github = screen.getByRole("link", { name: "GitHub" });
+    expect(github).toHaveAttribute("target", "_blank");
+    expect(github).toHaveAttribute("rel", "noopener noreferrer");
+    expect(screen.getByRole("link", { name: "Email" })).not.toHaveAttribute(
+      "target",
+    );
+  });
 });

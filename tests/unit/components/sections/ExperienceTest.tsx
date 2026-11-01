@@ -42,6 +42,28 @@ describe("Experience", () => {
     ).toEqual(["Software Engineer", "Developer"]);
   });
 
+  it("keeps a long history in one list in the order given", () => {
+    const many: ExperienceJob[] = Array.from({ length: 8 }, (_, index) => ({
+      when: `${2030 - index}`,
+      title: `Role ${index + 1}`,
+      company: `Company ${index + 1}`,
+      current: index === 0,
+      steps: [],
+    }));
+    const { container } = render(
+      <Experience jobs={many} resumeHref="/resume.pdf" />,
+    );
+
+    expect(
+      container.querySelectorAll("section#experience > div > ol"),
+    ).toHaveLength(1);
+    expect(
+      screen
+        .getAllByRole("heading", { level: 3 })
+        .map((heading) => heading.textContent),
+    ).toEqual(many.map((job) => job.title));
+  });
+
   it("lists the roles held and marks the current one as now", () => {
     render(<Experience jobs={jobs} resumeHref="/resume.pdf" />);
 

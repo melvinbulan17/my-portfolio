@@ -9,7 +9,6 @@ describe("About", () => {
     const { container } = render(<About {...about} />);
 
     expect(container.querySelector("section#about")).toHaveClass(
-      "bg-surface-900",
       "border-t",
       "py-32",
     );

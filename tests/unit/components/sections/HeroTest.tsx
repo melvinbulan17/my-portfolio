@@ -31,6 +31,35 @@ describe("Hero", () => {
     );
   });
 
+  it("keeps the name whole and unselectable with a hidden note on Bulan", () => {
+    const { container } = render(
+      <Hero
+        greeting="Hi! My name is"
+        name="Melvin S. Bulan"
+        nameNote={{
+          label: "// did you know?",
+          text: "means moon in Filipino",
+        }}
+        role={{ lead: "I lead it.", emphasis: "I test it." }}
+        intro="Intro"
+        primaryAction={{ label: "View Works", href: "#work" }}
+        secondaryAction={{ label: "More about me", href: "#about" }}
+        terminalLines={[]}
+      />,
+    );
+
+    const heading = screen.getByRole("heading", {
+      level: 1,
+      name: "Melvin S. Bulan",
+    });
+    expect(heading).toHaveClass("select-none");
+    const moon = container.querySelector("[data-moon]");
+    expect(moon?.firstChild).toHaveTextContent("Bulan");
+    expect(moon?.querySelector("[data-note]")).toHaveTextContent(
+      "means moon in Filipino",
+    );
+  });
+
   it("reveals the role line from behind a mask and underlines the emphasis", () => {
     const { container } = render(
       <Hero

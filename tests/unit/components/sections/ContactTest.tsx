@@ -10,7 +10,6 @@ describe("Contact", () => {
     const { container } = render(<Contact />);
 
     expect(container.querySelector("section#contact")).toHaveClass(
-      "bg-surface-900",
       "border-t",
       "py-32",
     );

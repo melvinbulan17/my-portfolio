@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <title>M mark, on light</title>
-  <mask id="tube"><path d="M13 52 L17 13 L32 38 L47 13 L51 52" stroke="#fff" stroke-width="12.5"></path><path d="M13 52 L17 13 L32 38 L47 13 L51 52" stroke="#000" stroke-width="6"></path></mask>
-  <mask id="clear"><rect width="64" height="64" fill="#fff"></rect><path d="M17.28 32.38 A10 10 0 1 0 29.62 44.72 A9 9 0 0 1 17.28 32.38 Z" fill="#000" stroke="#000" stroke-width="7"></path><path d="M7.78 37.55 A13 13 0 0 0 13.5 53.26" stroke="#000" stroke-width="7"></path></mask>
-  <g mask="url(#clear)"><rect width="64" height="64" fill="#D81B60" mask="url(#tube)"></rect></g>
-  <path d="M17.28 32.38 A10 10 0 1 0 29.62 44.72 A9 9 0 0 1 17.28 32.38 Z" stroke="#25294A" stroke-width="3.25"></path>
-  <path d="M7.78 37.55 A13 13 0 0 0 13.5 53.26" stroke="#D81B60" stroke-width="3.25"></path>
+  <mask id="tube"><path d="M13 52 L17 13 L32 38 L47 13 L51 52" stroke="#fff" stroke-width="12.5"/><path d="M13 52 L17 13 L32 38 L47 13 L51 52" stroke="#000" stroke-width="6"/></mask>
+  <mask id="clear"><rect width="64" height="64" fill="#fff"/><g transform="translate(-2 6)"><path d="M17.28 32.38 A10 10 0 1 0 29.62 44.72 A9 9 0 0 1 17.28 32.38 Z" fill="#000" stroke="#000" stroke-width="7"/></g></mask>
+  <g mask="url(#clear)"><rect width="64" height="64" fill="#D81B60" mask="url(#tube)"/></g>
+  <g transform="translate(-2 6)"><path d="M17.28 32.38 A10 10 0 1 0 29.62 44.72 A9 9 0 0 1 17.28 32.38 Z" stroke="#25294A" stroke-width="3.25"/></g>
 </svg>

@@ -35,6 +35,7 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
   const fieldRefs = useRef<
     Partial<Record<ContactField, HTMLInputElement | HTMLTextAreaElement>>
   >({});
+  const touched = useRef(new Set<ContactField>());
   const trapRef = useRef<HTMLInputElement>(null);
   const sentRef = useRef<HTMLDivElement>(null);
 
@@ -50,6 +51,7 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
 
   function change(field: ContactField, value: string) {
     setValues((current) => ({ ...current, [field]: value }));
+    touched.current.add(field);
     if (errors[field]) mark(field, value);
   }
 
@@ -109,13 +111,15 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
           name: field.name,
           placeholder: field.placeholder,
           required: true,
+          "aria-required": true,
           value: values[field.name],
           "aria-invalid": error ? true : undefined,
           "aria-describedby": error ? errorId : undefined,
           onBlur: (
             event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
           ) => {
-            if (event.target.value) mark(field.name, event.target.value);
+            if (touched.current.has(field.name) || errors[field.name])
+              mark(field.name, event.target.value);
           },
           onChange: (
             event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -126,6 +130,9 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
           <div key={field.name} className="grid gap-2">
             <label htmlFor={id} className="text-label">
               {field.label}
+              <span aria-hidden="true" className="ml-1 text-accent-bright">
+                *
+              </span>
             </label>
             {field.multiline ? (
               <textarea
@@ -189,7 +196,7 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
             ? contactCopy.sendingStatus
             : failed
               ? contactCopy.failed
-              : contactCopy.hint}
+              : null}
         </p>
       </div>
     </form>

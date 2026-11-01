@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 
+import { typeChar } from "@/lib/motion";
 import { timeline } from "@/lib/terminal";
 import type { TerminalLine } from "@/types/site";
 
@@ -19,6 +20,10 @@ function Highlighted({ text, highlight }: { text: string; highlight: string }) {
 }
 
 const lineClass = "block min-h-[22px] whitespace-pre-wrap";
+const typing = {
+  "--type-char": `${typeChar * 1000}ms`,
+} as CSSProperties;
+
 const landClass =
   "motion-safe:translate-y-1 motion-safe:opacity-0 motion-safe:animate-land";
 
@@ -34,6 +39,7 @@ export function TerminalCard({
   return (
     <div
       aria-hidden="true"
+      style={typing}
       className="border border-line-dark bg-surface-800 text-[13px]/[22px]"
     >
       <div className="flex items-center gap-1.5 border-b border-line-dark px-4 py-2.5">

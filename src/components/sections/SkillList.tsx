@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-import { RiseIn } from "@/components/sections/RiseIn";
+import { RiseIn, riseClass } from "@/components/sections/RiseIn";
 import { SkillIcon } from "@/components/sections/SkillIcon";
 import { cn } from "@/lib/cn";
 import { skillDelay } from "@/lib/motion";
@@ -9,9 +9,6 @@ import type { SkillGroup } from "@/types/skills";
 export type SkillListProps = {
   groups: SkillGroup[];
 };
-
-const riseClass =
-  "motion-safe:group-data-[stage=armed]/rise:translate-y-2 motion-safe:group-data-[stage=armed]/rise:opacity-0 motion-safe:group-data-[stage=in]/rise:transition-[opacity,translate] motion-safe:group-data-[stage=in]/rise:duration-(--rise-duration) motion-safe:group-data-[stage=in]/rise:ease-(--rise-ease) motion-safe:group-data-[stage=in]/rise:delay-(--rise-delay)";
 
 const delay = (group: number, index: number) =>
   ({

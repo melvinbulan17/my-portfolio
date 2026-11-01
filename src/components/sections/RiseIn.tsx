@@ -16,6 +16,9 @@ export type RiseInProps = {
   className?: string;
 };
 
+export const riseClass =
+  "motion-safe:group-data-[stage=armed]/rise:translate-y-2 motion-safe:group-data-[stage=armed]/rise:opacity-0 motion-safe:group-data-[stage=in]/rise:transition-[opacity,translate] motion-safe:group-data-[stage=in]/rise:duration-(--rise-duration) motion-safe:group-data-[stage=in]/rise:ease-(--rise-ease) motion-safe:group-data-[stage=in]/rise:delay-(--rise-delay)";
+
 type Stage = "rest" | "armed" | "in";
 
 const timing = {

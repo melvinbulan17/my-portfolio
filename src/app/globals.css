@@ -49,10 +49,10 @@
   --font-*: initial;
   --font-mono: var(--font-fira-code), ui-monospace, "SFMono-Regular", monospace;
 
-  --animate-type: type calc(var(--n) * 38ms) steps(var(--n), end)
-    calc(var(--at) * 38ms) forwards;
-  --animate-land: land 240ms var(--ease-out-expo) calc(var(--at) * 38ms)
-    forwards;
+  --animate-type: type calc(var(--n) * var(--type-char)) steps(var(--n), end)
+    calc(var(--at) * var(--type-char)) forwards;
+  --animate-land: land 240ms var(--ease-out-expo)
+    calc(var(--at) * var(--type-char)) forwards;
   --animate-marquee: marquee 48s linear infinite;
 
   @keyframes type {

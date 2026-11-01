@@ -1,7 +1,15 @@
+import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { Work } from "@/components/sections/Work";
-import { disciplines, hero, projects, terminalLines } from "@/content/site";
+import { experience } from "@/content/experience";
+import {
+  disciplines,
+  hero,
+  projects,
+  resumeHref,
+  terminalLines,
+} from "@/content/site";
 
 export default function Home() {
   return (
@@ -11,6 +19,7 @@ export default function Home() {
       </div>
       <Marquee items={disciplines} />
       <Work projects={projects} />
+      <Experience jobs={experience} resumeHref={resumeHref} />
     </main>
   );
 }

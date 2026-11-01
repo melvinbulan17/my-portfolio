@@ -1,6 +1,8 @@
+import { About } from "@/components/sections/About";
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { Work } from "@/components/sections/Work";
+import { about } from "@/content/about";
 import { disciplines, hero, projects, terminalLines } from "@/content/site";
 
 export default function Home() {
@@ -11,6 +13,7 @@ export default function Home() {
       </div>
       <Marquee items={disciplines} />
       <Work projects={projects} />
+      <About {...about} />
     </main>
   );
 }

@@ -1,7 +1,9 @@
+import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { Work } from "@/components/sections/Work";
+import { about } from "@/content/about";
 import { experience } from "@/content/experience";
 import {
   disciplines,
@@ -19,6 +21,7 @@ export default function Home() {
       </div>
       <Marquee items={disciplines} />
       <Work projects={projects} />
+      <About {...about} />
       <Experience jobs={experience} resumeHref={resumeHref} />
     </main>
   );

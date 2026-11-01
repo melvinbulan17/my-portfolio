@@ -11,7 +11,9 @@ export function TextLink({ onPaper, className, ...props }: TextLinkProps) {
   return (
     <Link
       className={cn(
-        "text-label underline-offset-4 hover:underline",
+        "relative text-label",
+        "before:absolute before:inset-x-0 before:-bottom-1 before:h-px before:origin-left before:scale-x-0 before:bg-current before:transition-transform before:duration-160 before:ease-out-expo hover:before:scale-x-100 hover:before:duration-240",
+        "motion-reduce:before:transition-none",
         onPaper
           ? "text-accent focus-visible:outline-accent"
           : "text-accent-bright",

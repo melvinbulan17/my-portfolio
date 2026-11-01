@@ -49,7 +49,6 @@ describe("Skills", () => {
     const { container } = render(<Skills groups={groups} />);
 
     expect(container.querySelector("section#tools")).toHaveClass(
-      "bg-surface-900",
       "border-t",
       "py-32",
     );

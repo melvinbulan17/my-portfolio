@@ -19,7 +19,7 @@ const delay = (index: number) =>
 
 export function Work({ projects, sideProjects }: WorkProps) {
   return (
-    <section id="work" className="bg-surface-900 py-32 max-[760px]:py-16">
+    <section id="work" className="py-32 max-[760px]:py-16">
       <div className="wrap">
         <SectionHeading number="01." title="Selected Work" />
         <div className="grid gap-16 max-[760px]:gap-20">

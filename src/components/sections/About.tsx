@@ -7,7 +7,7 @@ export function About({ story, glanceTitle, glance }: AboutProps) {
   return (
     <section
       id="about"
-      className="border-t border-line-dark bg-surface-900 py-32 max-[760px]:py-16"
+      className="border-t border-line-dark py-32 max-[760px]:py-16"
     >
       <div className="wrap">
         <SectionHeading number="02." title="About" />

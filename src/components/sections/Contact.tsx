@@ -6,7 +6,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="border-t border-line-dark bg-surface-900 py-32 max-[760px]:py-16"
+      className="border-t border-line-dark py-32 max-[760px]:py-16"
     >
       <div className="wrap">
         <SectionHeading number={contact.number} title={contact.title} />

@@ -1,3 +1,4 @@
+import { StarField } from "@/components/layout/StarField";
 import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
@@ -19,7 +20,8 @@ import { skillGroups } from "@/content/skills";
 
 export default function Home() {
   return (
-    <main className="flex-1">
+    <main className="group/page relative isolate flex-1">
+      <StarField className="transition-[filter] duration-480 ease-out-expo group-has-[[data-moon]:hover]/page:brightness-150" />
       <div className="flex flex-col lg:min-h-[calc(100dvh-6rem)]">
         <Hero {...hero} terminalLines={terminalLines} />
       </div>

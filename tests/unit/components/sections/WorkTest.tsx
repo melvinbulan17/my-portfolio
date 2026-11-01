@@ -27,10 +27,7 @@ describe("Work", () => {
       />,
     );
 
-    expect(container.querySelector("section#work")).toHaveClass(
-      "bg-surface-900",
-      "py-32",
-    );
+    expect(container.querySelector("section#work")).toHaveClass("py-32");
     expect(
       screen.getByRole("heading", { level: 2, name: "Selected Work" }),
     ).toBeInTheDocument();

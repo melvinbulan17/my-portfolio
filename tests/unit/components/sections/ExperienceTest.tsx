@@ -32,7 +32,6 @@ describe("Experience", () => {
     );
 
     expect(container.querySelector("section#experience")).toHaveClass(
-      "bg-surface-900",
       "border-t",
       "py-32",
     );

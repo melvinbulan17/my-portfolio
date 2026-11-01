@@ -40,6 +40,10 @@ export const hero = {
   greeting: "Hi! My name is",
   name: siteOwner,
   role: { lead: "I lead it.", emphasis: "I test it." },
+  nameNote: {
+    label: "// did you know?",
+    text: "means moon in Filipino",
+  },
   intro:
     "Currently a software engineer and project manager on a public key infrastructure (PKI) web application at a Swiss startup.",
   primaryAction: { label: "View Works", href: "#work" },

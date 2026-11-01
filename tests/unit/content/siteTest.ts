@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-import { resumeHref, socialLinks } from "@/content/site";
+import { resumeHref, siteTagline, socialLinks } from "@/content/site";
 
 describe("site content", () => {
   it("gives every social link a real destination", () => {
@@ -11,6 +11,10 @@ describe("site content", () => {
       expect(link.href).not.toBe("#");
       expect(link.href).toMatch(/^(https:\/\/|mailto:)/);
     }
+  });
+
+  it("uses the short footer line", () => {
+    expect(siteTagline).toBe("Plan. Execute. Excel.");
   });
 
   it("points the resume link at a file in public", () => {

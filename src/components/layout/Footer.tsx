@@ -1,8 +1,8 @@
 import { ArrowUp } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { newTabProps } from "@/lib/links";
 import type { NavLink, SocialLink } from "@/types/site";
 
 export type FooterProps = {
@@ -53,16 +53,20 @@ export function Footer({
           <Column title="Navigate">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className={linkClass}>
+                <a href={link.href} className={linkClass}>
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </Column>
           <Column title="Elsewhere">
             {socialLinks.map((link) => (
               <li key={link.icon}>
-                <a href={link.href} className={linkClass}>
+                <a
+                  href={link.href}
+                  className={linkClass}
+                  {...newTabProps(link.href)}
+                >
                   {link.label}
                 </a>
               </li>
@@ -70,7 +74,11 @@ export function Footer({
           </Column>
           <Column title="Files">
             <li>
-              <a href={resumeHref} className={linkClass}>
+              <a
+                href={resumeHref}
+                className={linkClass}
+                {...newTabProps(resumeHref)}
+              >
                 Resume (PDF)
               </a>
             </li>
@@ -80,13 +88,13 @@ export function Footer({
           <span>
             &copy; {year} {owner}
           </span>
-          <Link
+          <a
             href="#top"
             className={`inline-flex items-center gap-1 ${linkClass}`}
           >
             Back to top
             <ArrowUp aria-hidden="true" className="size-3.5" />
-          </Link>
+          </a>
         </div>
       </div>
     </footer>

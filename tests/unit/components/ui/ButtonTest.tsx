@@ -14,6 +14,22 @@ describe("Button", () => {
     );
   });
 
+  it("keeps in-page links in the same tab", () => {
+    render(<Button href="#work">View Works</Button>);
+
+    const link = screen.getByRole("link", { name: "View Works" });
+    expect(link).not.toHaveAttribute("target");
+    expect(link).not.toHaveAttribute("rel");
+  });
+
+  it("opens links that leave the site in a new tab", () => {
+    render(<Button href="https://github.com/example">View code</Button>);
+
+    const link = screen.getByRole("link", { name: "View code" });
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
   it("renders a button that defaults to type=button", async () => {
     const onClick = vi.fn();
     render(<Button onClick={onClick}>Send</Button>);

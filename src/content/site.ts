@@ -2,7 +2,7 @@ import type { NavLink, Project, SocialLink, TerminalLine } from "@/types/site";
 
 export const siteOwner = "Melvin S. Bulan";
 
-export const siteTagline = "Software engineer: project manager and QA.";
+export const siteTagline = "Plan. Execute. Excel.";
 
 export const copyrightYear = 2026;
 

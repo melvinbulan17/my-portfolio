@@ -13,20 +13,13 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
     <section id="experience" className="bg-surface-900 pb-32 max-[760px]:pb-16">
       <div className="wrap">
         <SectionHeading number="03." title="Experience" />
-        <ol className="min-[761px]:flex min-[761px]:flex-row-reverse">
+        <ol>
           {jobs.map((job) => (
             <li
               key={`${job.company}-${job.when}`}
-              className={cn(
-                "group grid gap-4",
-                "min-[761px]:relative min-[761px]:block min-[761px]:flex-1 min-[761px]:basis-0 min-[761px]:border-t min-[761px]:pt-8 min-[761px]:pr-8",
-                "min-[761px]:before:absolute min-[761px]:before:-top-[7px] min-[761px]:before:left-0 min-[761px]:before:size-[13px] min-[761px]:before:border min-[761px]:before:border-accent min-[761px]:before:content-['']",
-                job.current
-                  ? "min-[761px]:border-accent min-[761px]:before:bg-accent"
-                  : "min-[761px]:border-line-dark min-[761px]:before:bg-surface-900",
-              )}
+              className="group grid gap-4 min-[761px]:grid-cols-[15rem_1fr] min-[761px]:gap-16"
             >
-              <div className="pl-8 text-[14px] leading-7 text-text-on-dark-muted transition-colors duration-150 ease-out group-hover:text-accent-bright min-[761px]:mb-4 min-[761px]:min-h-12 min-[761px]:pl-0">
+              <div className="pl-8 text-[14px] leading-7 text-text-on-dark-muted transition-colors duration-150 ease-out group-hover:text-accent-bright min-[761px]:pl-0">
                 {job.when}
                 {job.where && (
                   <span className="block text-[13px] leading-5 text-text-on-dark-muted">
@@ -36,10 +29,11 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
               </div>
               <div
                 className={cn(
-                  "relative border-l border-line-dark pb-16 pl-8 group-last:border-l-transparent group-last:pb-0",
+                  "relative border-l pb-16 pl-8 group-last:border-l-transparent group-last:pb-0",
                   "before:absolute before:top-[7px] before:-left-[7px] before:size-[13px] before:border before:border-accent before:content-['']",
-                  job.current ? "before:bg-accent" : "before:bg-surface-900",
-                  "min-[761px]:border-l-0 min-[761px]:p-0 min-[761px]:before:hidden",
+                  job.current
+                    ? "border-accent before:bg-accent"
+                    : "border-line-dark before:bg-surface-900",
                 )}
               >
                 <h3 className="text-h3">{job.title}</h3>
@@ -57,7 +51,6 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
                           step.current
                             ? "before:bg-accent-bright"
                             : "before:bg-line-dark-strong",
-                          "min-[761px]:pl-4 min-[761px]:before:left-0",
                         )}
                       >
                         {step.title}
@@ -77,7 +70,7 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
         <TextLink
           href={resumeHref}
           prefetch={false}
-          className="mt-8 ml-8 inline-block min-[761px]:ml-0"
+          className="mt-8 ml-8 inline-block min-[761px]:ml-[21rem]"
         >
           Full history in the resume (PDF) →
         </TextLink>

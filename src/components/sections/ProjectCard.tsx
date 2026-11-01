@@ -27,14 +27,19 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <article>
-      <RiseIn className="grid grid-cols-[1.2fr_1fr] items-center gap-16 max-[760px]:grid-cols-1 max-[760px]:gap-8">
+      <RiseIn
+        className={cn(
+          "grid items-center gap-16 max-[1000px]:gap-10 max-[760px]:grid-cols-1 max-[760px]:gap-8 min-[761px]:min-h-[min(calc(100svh-12rem),760px)]",
+          flip ? "grid-cols-[1fr_1.5fr]" : "grid-cols-[1.5fr_1fr]",
+        )}
+      >
         <div
           data-slot="shot"
           className={cn(flip && "min-[761px]:order-2", riseClass)}
         >
           <div
             className={cn(
-              "group/shot relative grid aspect-[16/10] place-items-center overflow-hidden text-[13px] text-text-on-dark-muted",
+              "group/shot relative grid aspect-[16/10] place-items-center overflow-hidden text-[13px] text-text-on-dark-muted min-[761px]:aspect-[4/3]",
               !image &&
                 "border border-dashed border-line-dark-strong transition-colors duration-240 ease-out-expo hover:border-text-on-dark-muted",
             )}
@@ -44,7 +49,7 @@ export function ProjectCard({
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes="(max-width: 760px) 100vw, 600px"
+                sizes="(max-width: 760px) 100vw, 680px"
                 className="object-cover motion-safe:transition-transform motion-safe:duration-480 motion-safe:ease-out-expo motion-safe:group-hover/shot:scale-[1.025]"
               />
             ) : (
@@ -54,7 +59,9 @@ export function ProjectCard({
         </div>
         <div data-slot="text" style={textDelay} className={riseClass}>
           <p className="mb-2 text-[13px]/5 text-accent-bright">{kicker}</p>
-          <h3 className="mb-4 text-[24px]/8 font-semibold">{title}</h3>
+          <h3 className="mb-4 text-[28px]/9 font-semibold max-[760px]:text-[24px]/8">
+            {title}
+          </h3>
           <TagList tags={tags} className="mb-6" />
           <p className="mb-6 text-text-on-dark-muted">{summary}</p>
           <div className="flex flex-wrap gap-4">

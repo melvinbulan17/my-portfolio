@@ -14,3 +14,5 @@ export const marqueeLoop = 48;
 
 export const skillDelay = (group: number, index: number) =>
   group * 0.06 + index * 0.05;
+
+export const sideProjectDelay = (index: number) => index * 0.06;

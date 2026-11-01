@@ -21,3 +21,10 @@ export type Project = {
   image?: { src: string; alt: string };
   actions: NavLink[];
 };
+
+export type SideProject = {
+  title: string;
+  summary: string;
+  tags: string[];
+  links: NavLink[];
+};

@@ -90,6 +90,20 @@ describe("ProjectCard", () => {
     expect(screen.getByText("Signing Portal")).toBeVisible();
   });
 
+  it("keeps the screenshot in the wide column on either side", () => {
+    const { container, rerender } = render(<ProjectCard {...project} />);
+    const grid = () => container.querySelector("[data-stage]");
+
+    expect(grid()).toHaveClass("grid-cols-[1.5fr_1fr]");
+
+    rerender(<ProjectCard {...project} flip />);
+
+    expect(grid()).toHaveClass("grid-cols-[1fr_1.5fr]");
+    expect(container.querySelector('[data-slot="shot"]')).toHaveClass(
+      "min-[761px]:order-2",
+    );
+  });
+
   it("rises in once, the text just after the screenshot", () => {
     const observers = mockObserver();
     const { container } = render(<ProjectCard {...project} />);

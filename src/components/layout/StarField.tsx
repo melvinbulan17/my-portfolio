@@ -12,7 +12,7 @@ export type StarFieldProps = {
 const sizes = {
   1: "size-px",
   2: "size-0.5",
-  3: "size-[3px] shadow-[0_0_4px_1px_rgb(230_232_236/0.35)]",
+  3: "size-[3px] shadow-[0_0_3px_rgb(230_232_236/0.25)]",
 };
 
 export function StarField({
@@ -24,7 +24,7 @@ export function StarField({
     <div
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-x-0 top-8 bottom-0 -z-10 overflow-hidden",
+        "pointer-events-none absolute inset-0 -z-10 overflow-hidden",
         className,
       )}
     >

@@ -17,7 +17,7 @@ describe("StarField", () => {
       "pointer-events-none",
       "-z-10",
       "absolute",
-      "top-8",
+      "inset-0",
     );
     const dots = field.querySelectorAll("[data-star]");
     expect(dots).toHaveLength(12);
@@ -28,7 +28,7 @@ describe("StarField", () => {
     expect(field.querySelectorAll("[data-sparkle]")).toHaveLength(2);
   });
 
-  it("fades every star in, twinkles a quarter of them, and glows only the biggest", () => {
+  it("fades every star in, twinkles one in five, and glows only the biggest", () => {
     const stars = makeStars(40, 3);
     const { container } = render(<StarField stars={stars} sparkles={[]} />);
 
@@ -37,6 +37,6 @@ describe("StarField", () => {
       expect(dot.className).toMatch(/motion-safe:animate-/);
       expect(dot.className.includes("shadow-")).toBe(dot.dataset.star === "3");
     }
-    expect(dots.filter((dot) => dot.dataset.twinkle)).toHaveLength(10);
+    expect(dots.filter((dot) => dot.dataset.twinkle)).toHaveLength(8);
   });
 });

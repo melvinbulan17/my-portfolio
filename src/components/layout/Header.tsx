@@ -19,7 +19,7 @@ export function Header({ children }: HeaderProps) {
   return (
     <header
       data-scrolled={scrolled || undefined}
-      className="fixed inset-x-0 top-0 z-20 bg-surface-900 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-line-dark after:opacity-0 after:transition-opacity after:duration-240 after:ease-out-expo has-aria-expanded:after:opacity-100 data-scrolled:after:opacity-100 motion-reduce:after:transition-none"
+      className="fixed inset-x-0 top-0 z-20 bg-transparent transition-[background-color,backdrop-filter] duration-240 ease-out-expo after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-line-dark after:opacity-0 after:transition-opacity after:duration-240 after:ease-out-expo has-aria-expanded:bg-surface-900 has-aria-expanded:after:opacity-100 data-scrolled:bg-surface-900/85 data-scrolled:backdrop-blur-md data-scrolled:after:opacity-100 motion-reduce:transition-none motion-reduce:after:transition-none"
     >
       <div className="wrap">{children}</div>
     </header>

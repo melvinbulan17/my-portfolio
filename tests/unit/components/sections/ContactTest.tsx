@@ -9,7 +9,11 @@ describe("Contact", () => {
   it("is the #contact section with its heading, line and form", () => {
     const { container } = render(<Contact />);
 
-    expect(container.querySelector("section#contact")).not.toBeNull();
+    expect(container.querySelector("section#contact")).toHaveClass(
+      "bg-surface-900",
+      "border-t",
+      "py-32",
+    );
     expect(
       screen.getByRole("heading", { level: 2, name: "Contact" }),
     ).toBeInTheDocument();

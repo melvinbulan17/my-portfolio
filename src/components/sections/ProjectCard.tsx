@@ -34,9 +34,9 @@ export function ProjectCard({
         >
           <div
             className={cn(
-              "group/shot relative grid aspect-[16/10] place-items-center overflow-hidden text-[13px] text-text-on-paper-muted",
+              "group/shot relative grid aspect-[16/10] place-items-center overflow-hidden text-[13px] text-text-on-dark-muted",
               !image &&
-                "border border-dashed border-line-paper transition-colors duration-240 ease-out-expo hover:border-text-on-paper-muted",
+                "border border-dashed border-line-dark-strong transition-colors duration-240 ease-out-expo hover:border-text-on-dark-muted",
             )}
           >
             {image ? (
@@ -53,13 +53,13 @@ export function ProjectCard({
           </div>
         </div>
         <div data-slot="text" style={textDelay} className={riseClass}>
-          <p className="mb-2 text-[13px]/5 text-accent">{kicker}</p>
+          <p className="mb-2 text-[13px]/5 text-accent-bright">{kicker}</p>
           <h3 className="mb-4 text-[24px]/8 font-semibold">{title}</h3>
           <TagList tags={tags} className="mb-6" />
-          <p className="mb-6">{summary}</p>
+          <p className="mb-6 text-text-on-dark-muted">{summary}</p>
           <div className="flex flex-wrap gap-4">
             {actions.map((action) => (
-              <Button key={action.label} href={action.href} onPaper>
+              <Button key={action.label} href={action.href}>
                 {action.label}
               </Button>
             ))}

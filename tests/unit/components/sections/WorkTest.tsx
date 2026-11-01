@@ -17,7 +17,11 @@ describe("Work", () => {
       <Work projects={[project("First"), project("Second")]} />,
     );
 
-    expect(container.querySelector("section#work")).not.toBeNull();
+    expect(container.querySelector("section#work")).toHaveClass(
+      "bg-surface-900",
+      "py-32",
+    );
+    expect(container.querySelector("section#work")).not.toHaveClass("bg-paper");
     expect(
       screen.getByRole("heading", { level: 2, name: "Work" }),
     ).toBeInTheDocument();

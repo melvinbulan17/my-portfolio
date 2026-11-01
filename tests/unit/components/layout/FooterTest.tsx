@@ -28,6 +28,7 @@ describe("Footer", () => {
   it("renders the link columns, copyright and back-to-top link", () => {
     const footer = renderFooter();
 
+    expect(footer).toHaveClass("bg-surface-900", "border-t");
     expect(
       within(footer)
         .getAllByRole("heading")

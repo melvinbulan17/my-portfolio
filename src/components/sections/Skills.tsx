@@ -11,7 +11,7 @@ export function Skills({ groups }: SkillsProps) {
     <section
       id="tools"
       aria-labelledby="tools-heading"
-      className="py-32 max-[760px]:py-16"
+      className="border-t border-line-dark bg-surface-900 py-32 max-[760px]:py-16"
     >
       <div className="wrap">
         <SectionHeading

@@ -8,7 +8,11 @@ describe("About", () => {
   it("is the #about section with its heading", () => {
     const { container } = render(<About {...about} />);
 
-    expect(container.querySelector("section#about")).not.toBeNull();
+    expect(container.querySelector("section#about")).toHaveClass(
+      "bg-surface-900",
+      "border-t",
+      "py-32",
+    );
     expect(
       screen.getByRole("heading", { level: 2, name: "About" }),
     ).toBeInTheDocument();
@@ -36,6 +40,7 @@ describe("About", () => {
     const glance = screen.getByRole("complementary", {
       name: "// right now",
     });
+    expect(glance).toHaveClass("bg-surface-800");
     const terms = within(glance).getAllByRole("term");
     const definitions = within(glance).getAllByRole("definition");
 

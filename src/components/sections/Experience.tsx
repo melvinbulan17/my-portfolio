@@ -10,7 +10,10 @@ export type ExperienceProps = {
 
 export function Experience({ jobs, resumeHref }: ExperienceProps) {
   return (
-    <section id="experience" className="bg-surface-900 pb-32 max-[760px]:pb-16">
+    <section
+      id="experience"
+      className="border-t border-line-dark bg-surface-900 py-32 max-[760px]:py-16"
+    >
       <div className="wrap">
         <SectionHeading number="03." title="Experience" />
         <ol>

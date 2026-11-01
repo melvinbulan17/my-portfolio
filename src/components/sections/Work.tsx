@@ -8,12 +8,9 @@ export type WorkProps = {
 
 export function Work({ projects }: WorkProps) {
   return (
-    <section
-      id="work"
-      className="bg-paper py-32 text-text-on-paper max-[760px]:py-16"
-    >
+    <section id="work" className="bg-surface-900 py-32 max-[760px]:py-16">
       <div className="wrap">
-        <SectionHeading number="01." title="Work" onPaper />
+        <SectionHeading number="01." title="Work" />
         <div className="grid gap-24">
           {projects.map((project, index) => (
             <ProjectCard

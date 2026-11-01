@@ -55,6 +55,9 @@ describe("ProjectCard", () => {
       "href",
       "https://github.com/example",
     );
+    expect(screen.getByRole("link", { name: "View code" })).toHaveClass(
+      "text-text-on-dark",
+    );
   });
 
   it("shows a placeholder slot until a screenshot exists", () => {

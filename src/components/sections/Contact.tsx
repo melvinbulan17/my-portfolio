@@ -4,7 +4,10 @@ import { contact } from "@/content/contact";
 
 export function Contact() {
   return (
-    <section id="contact" className="pb-32 max-[760px]:pb-16">
+    <section
+      id="contact"
+      className="border-t border-line-dark bg-surface-900 py-32 max-[760px]:py-16"
+    >
       <div className="wrap">
         <SectionHeading number={contact.number} title={contact.title} />
         <div className="grid grid-cols-[1fr_1.2fr] items-start gap-16 max-[760px]:grid-cols-1">

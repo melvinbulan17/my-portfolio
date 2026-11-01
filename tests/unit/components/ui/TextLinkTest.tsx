@@ -20,4 +20,16 @@ describe("TextLink", () => {
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
   });
+
+  it("does not pass Link options to a plain anchor", () => {
+    render(
+      <TextLink href="/resume.pdf" prefetch={false}>
+        Resume
+      </TextLink>,
+    );
+
+    expect(screen.getByRole("link", { name: "Resume" })).not.toHaveAttribute(
+      "prefetch",
+    );
+  });
 });

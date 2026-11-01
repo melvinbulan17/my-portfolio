@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ComponentProps } from "react";
 
 import { cn } from "@/lib/cn";
-import { isAppRoute, newTabProps } from "@/lib/links";
+import { anchorProps, isAppRoute, newTabProps } from "@/lib/links";
 
 type BaseProps = {
   onPaper?: boolean;
@@ -30,9 +30,16 @@ export function Button({ onPaper, className, ...props }: ButtonProps) {
   );
 
   if (props.href !== undefined) {
-    const Anchor = isAppRoute(props.href) ? Link : "a";
+    if (isAppRoute(props.href)) {
+      return <Link className={classes} {...props} />;
+    }
+
     return (
-      <Anchor className={classes} {...newTabProps(props.href)} {...props} />
+      <a
+        className={classes}
+        {...newTabProps(props.href)}
+        {...anchorProps(props)}
+      />
     );
   }
 

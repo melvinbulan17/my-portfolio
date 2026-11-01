@@ -45,7 +45,6 @@ export const contactErrors: Record<ContactField, string> = {
 export const contactCopy = {
   submit: "Send message",
   sending: "Sending…",
-  hint: "All three fields are required.",
   sendingStatus: "Sending your message.",
   failed: "couldn’t send. Try again, or use LinkedIn in the footer.",
   sentCode: "200 OK",

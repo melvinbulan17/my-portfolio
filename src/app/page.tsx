@@ -12,6 +12,7 @@ import {
   hero,
   projects,
   resumeHref,
+  sideProjects,
   terminalLines,
 } from "@/content/site";
 import { skillGroups } from "@/content/skills";
@@ -23,7 +24,7 @@ export default function Home() {
         <Hero {...hero} terminalLines={terminalLines} />
       </div>
       <Marquee items={disciplines} />
-      <Work projects={projects} />
+      <Work projects={projects} sideProjects={sideProjects} />
       <About {...about} />
       <Experience jobs={experience} resumeHref={resumeHref} />
       <Skills groups={skillGroups} />

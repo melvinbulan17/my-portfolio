@@ -7,12 +7,31 @@ import {
   disciplines,
   hero,
   resumeHref,
+  sideProjects,
   siteTagline,
   socialLinks,
   terminalLines,
 } from "@/content/site";
 
 describe("site content", () => {
+  it("gives every side project a live site and its code", () => {
+    for (const project of sideProjects) {
+      expect(project.links.map((link) => link.label)).toEqual(["Live", "Code"]);
+    }
+  });
+
+  it("has three to six side projects that each link out", () => {
+    expect(sideProjects.length).toBeGreaterThanOrEqual(3);
+    expect(sideProjects.length).toBeLessThanOrEqual(6);
+    for (const project of sideProjects) {
+      expect(project.links.length).toBeGreaterThanOrEqual(1);
+      expect(project.links.length).toBeLessThanOrEqual(2);
+      for (const link of project.links) {
+        expect(link.href).toMatch(/^https:\/\//);
+      }
+    }
+  });
+
   it("gives every social link a real destination", () => {
     for (const link of socialLinks) {
       expect(link.href).not.toBe("#");

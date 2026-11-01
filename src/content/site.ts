@@ -1,4 +1,10 @@
-import type { NavLink, Project, SocialLink, TerminalLine } from "@/types/site";
+import type {
+  NavLink,
+  Project,
+  SideProject,
+  SocialLink,
+  TerminalLine,
+} from "@/types/site";
 
 export const siteOwner = "Melvin S. Bulan";
 
@@ -87,6 +93,63 @@ export const projects: Project[] = [
     actions: [
       { label: "Live site", href: "#" },
       { label: "View code", href: "#" },
+    ],
+  },
+];
+
+export const sideProjects: SideProject[] = [
+  {
+    title: "Lorem Tracker",
+    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    tags: ["Lorem", "Ipsum"],
+    links: [
+      { label: "Live", href: "https://example.com" },
+      { label: "Code", href: "https://github.com/melvinbulan17" },
+    ],
+  },
+  {
+    title: "Ipsum Notes",
+    summary: "Sed do eiusmod tempor incididunt ut labore et dolore.",
+    tags: ["Dolor", "Sit"],
+    links: [
+      { label: "Live", href: "https://example.com" },
+      { label: "Code", href: "https://github.com/melvinbulan17" },
+    ],
+  },
+  {
+    title: "Dolor Scripts",
+    summary: "Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+    tags: ["Amet", "Lorem", "Elit"],
+    links: [
+      { label: "Live", href: "https://example.com" },
+      { label: "Code", href: "https://github.com/melvinbulan17" },
+    ],
+  },
+  {
+    title: "Sit Amet CLI",
+    summary: "Duis aute irure dolor in reprehenderit in voluptate velit.",
+    tags: ["Ipsum", "Tempor"],
+    links: [
+      { label: "Live", href: "https://example.com" },
+      { label: "Code", href: "https://github.com/melvinbulan17" },
+    ],
+  },
+  {
+    title: "Consectetur Kit",
+    summary: "Excepteur sint occaecat cupidatat non proident, sunt in culpa.",
+    tags: ["Dolor", "Magna"],
+    links: [
+      { label: "Live", href: "https://example.com" },
+      { label: "Code", href: "https://github.com/melvinbulan17" },
+    ],
+  },
+  {
+    title: "Adipiscing Board",
+    summary: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
+    tags: ["Lorem", "Aliqua"],
+    links: [
+      { label: "Live", href: "https://example.com" },
+      { label: "Code", href: "https://github.com/melvinbulan17" },
     ],
   },
 ];

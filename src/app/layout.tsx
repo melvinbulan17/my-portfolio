@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Nav } from "@/components/layout/Nav";
 import { SocialRail } from "@/components/layout/SocialRail";
+import { StarField } from "@/components/layout/StarField";
 import {
   copyrightYear,
   navLinks,
@@ -35,7 +36,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${firaCode.variable} antialiased`}
     >
-      <body className="flex min-h-dvh flex-col pt-24">
+      <body className="group/page relative isolate flex min-h-dvh flex-col pt-24">
+        <StarField className="transition-[filter] duration-480 ease-out-expo group-has-[[data-moon]:hover]/page:brightness-150" />
         <Header>
           <Nav links={navLinks} resumeHref={resumeHref} />
         </Header>

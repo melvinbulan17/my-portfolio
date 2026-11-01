@@ -56,7 +56,7 @@ describe("fade", () => {
 
 describe("makeSparkles", () => {
   it("places a few sparkles, mostly near the top, at a readable size", () => {
-    const sparkles = makeSparkles(7, 29);
+    const sparkles = makeSparkles(4, 29);
     expect(sparkles).toEqual(pageSparkles);
     for (const sparkle of sparkles) {
       expect(sparkle.size).toBeGreaterThanOrEqual(9);
@@ -64,6 +64,6 @@ describe("makeSparkles", () => {
       expect(sparkle.x).toBeGreaterThan(3);
       expect(sparkle.x).toBeLessThan(97);
     }
-    expect(pageStars).toHaveLength(170);
+    expect(pageStars).toHaveLength(90);
   });
 });

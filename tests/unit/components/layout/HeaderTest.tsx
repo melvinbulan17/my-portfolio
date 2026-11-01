@@ -31,6 +31,20 @@ describe("Header", () => {
     expect(header).not.toHaveAttribute("data-scrolled");
   });
 
+  it("lets the stars show through at the top and fades a bar in once scrolled", () => {
+    render(<Header>nav</Header>);
+    const header = screen.getByRole("banner");
+
+    expect(header).toHaveClass(
+      "bg-transparent",
+      "data-scrolled:bg-surface-900/85",
+      "data-scrolled:backdrop-blur-md",
+      "has-aria-expanded:bg-surface-900",
+      "duration-240",
+    );
+    expect(header).not.toHaveClass("bg-surface-900");
+  });
+
   it("starts scrolled when the page loads partway down", () => {
     scrollTo(400);
     render(<Header>nav</Header>);

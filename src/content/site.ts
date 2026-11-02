@@ -39,7 +39,7 @@ export const socialLinks: SocialLink[] = [
 export const hero = {
   greeting: "Hi! My name is",
   name: siteOwner,
-  role: { lead: "I lead it.", emphasis: "I test it." },
+  role: { lead: "Make it work.", emphasis: "Make it right." },
   nameNote: {
     label: "// did you know?",
     text: "means moon in Filipino",
@@ -81,14 +81,22 @@ export const disciplines = [
 
 export const projects: Project[] = [
   {
-    kicker: "Lorem ipsum · dolor",
-    title: "Lorem Ipsum Platform",
-    tags: ["Lorem", "Ipsum", "Dolor", "Sit amet"],
+    kicker: "Browser extension",
+    title: "Dummio",
+    tags: ["TypeScript", "React", "Tailwind CSS"],
     summary:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.",
-    actions: [{ label: "Case study", href: "#" }],
+      "A browser extension that fills web forms with realistic test data in one click. It reads each field and shapes the value to fit, and nothing leaves your browser.",
+    image: {
+      src: "/images/dummio.png",
+      alt: "The Dummio website, with the headline Stop typing test data and a sample of filled form fields",
+    },
+    actions: [
+      { label: "Live site", href: "https://dummio.vercel.app/" },
+      { label: "View code", href: "https://github.com/melvinbulan17/dummio" },
+    ],
   },
   {
+    hidden: true,
     kicker: "Lorem ipsum",
     title: "Lorem Ipsum Dolor",
     tags: ["Lorem", "Ipsum", "Dolor", "Amet"],
@@ -103,15 +111,15 @@ export const projects: Project[] = [
 
 export const sideProjects: SideProject[] = [
   {
-    title: "Lorem Tracker",
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    tags: ["Lorem", "Ipsum"],
+    title: "This portfolio",
+    summary: "The site you're on, designed and built from scratch.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     links: [
-      { label: "Live", href: "https://example.com" },
-      { label: "Code", href: "https://github.com/melvinbulan17" },
+      { label: "Code", href: "https://github.com/melvinbulan17/my-portfolio" },
     ],
   },
   {
+    hidden: true,
     title: "Ipsum Notes",
     summary: "Sed do eiusmod tempor incididunt ut labore et dolore.",
     tags: ["Dolor", "Sit"],
@@ -121,6 +129,7 @@ export const sideProjects: SideProject[] = [
     ],
   },
   {
+    hidden: true,
     title: "Dolor Scripts",
     summary: "Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
     tags: ["Amet", "Lorem", "Elit"],
@@ -130,6 +139,7 @@ export const sideProjects: SideProject[] = [
     ],
   },
   {
+    hidden: true,
     title: "Sit Amet CLI",
     summary: "Duis aute irure dolor in reprehenderit in voluptate velit.",
     tags: ["Ipsum", "Tempor"],
@@ -139,6 +149,7 @@ export const sideProjects: SideProject[] = [
     ],
   },
   {
+    hidden: true,
     title: "Consectetur Kit",
     summary: "Excepteur sint occaecat cupidatat non proident, sunt in culpa.",
     tags: ["Dolor", "Magna"],
@@ -148,6 +159,7 @@ export const sideProjects: SideProject[] = [
     ],
   },
   {
+    hidden: true,
     title: "Adipiscing Board",
     summary: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
     tags: ["Lorem", "Aliqua"],

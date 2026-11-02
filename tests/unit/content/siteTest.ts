@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import {
   disciplines,
   hero,
+  projects,
   resumeHref,
   sideProjects,
   siteTagline,
@@ -14,15 +15,28 @@ import {
 } from "@/content/site";
 
 describe("site content", () => {
-  it("gives every side project a live site and its code", () => {
-    for (const project of sideProjects) {
-      expect(project.links.map((link) => link.label)).toEqual(["Live", "Code"]);
-    }
+  it("shows Dummio as the only selected work, linking to its site and code", () => {
+    const visible = projects.filter((project) => !project.hidden);
+
+    expect(visible.map((project) => project.title)).toEqual(["Dummio"]);
+    expect(visible[0].actions.map((action) => action.href)).toEqual([
+      "https://dummio.vercel.app/",
+      "https://github.com/melvinbulan17/dummio",
+    ]);
+    expect(
+      existsSync(join(process.cwd(), "public", visible[0].image!.src)),
+    ).toBe(true);
   });
 
-  it("has three to six side projects that each link out", () => {
-    expect(sideProjects.length).toBeGreaterThanOrEqual(3);
-    expect(sideProjects.length).toBeLessThanOrEqual(6);
+  it("shows this portfolio as the only side project", () => {
+    expect(
+      sideProjects
+        .filter((project) => !project.hidden)
+        .map((project) => project.title),
+    ).toEqual(["This portfolio"]);
+  });
+
+  it("gives every side project one or two links that leave the site", () => {
     for (const project of sideProjects) {
       expect(project.links.length).toBeGreaterThanOrEqual(1);
       expect(project.links.length).toBeLessThanOrEqual(2);

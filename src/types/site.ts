@@ -20,6 +20,7 @@ export type Project = {
   summary: string;
   image?: { src: string; alt: string };
   actions: NavLink[];
+  hidden?: boolean;
 };
 
 export type SideProject = {
@@ -27,4 +28,5 @@ export type SideProject = {
   summary: string;
   tags: string[];
   links: NavLink[];
+  hidden?: boolean;
 };

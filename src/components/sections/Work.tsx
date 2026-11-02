@@ -18,12 +18,15 @@ const delay = (index: number) =>
   }) as CSSProperties;
 
 export function Work({ projects, sideProjects }: WorkProps) {
+  const visibleProjects = projects.filter((project) => !project.hidden);
+  const visibleSideProjects = sideProjects.filter((project) => !project.hidden);
+
   return (
     <section id="work" className="py-32 max-[760px]:py-16">
       <div className="wrap">
         <SectionHeading number="01." title="Selected Work" />
         <div className="grid gap-16 max-[760px]:gap-20">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <ProjectCard
               key={project.title}
               {...project}
@@ -31,7 +34,7 @@ export function Work({ projects, sideProjects }: WorkProps) {
             />
           ))}
         </div>
-        {sideProjects.length > 0 && (
+        {visibleSideProjects.length > 0 && (
           <div className="mt-32 max-[760px]:mt-20">
             <div className="mb-10 flex items-baseline gap-4">
               <h3 className="text-h3">Side projects</h3>
@@ -41,7 +44,7 @@ export function Work({ projects, sideProjects }: WorkProps) {
               />
             </div>
             <RiseIn className="grid grid-cols-3 gap-6 max-[1000px]:grid-cols-2 max-[760px]:grid-cols-1">
-              {sideProjects.map((project, index) => (
+              {visibleSideProjects.map((project, index) => (
                 <SideProjectCard
                   key={project.title}
                   {...project}

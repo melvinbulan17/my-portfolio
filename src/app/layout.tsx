@@ -25,8 +25,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
-  title: "Bulan | Digital Portfolio",
-  description: "Project manager and QA engineer. I lead it. I test it.",
+  title: "MBulan | Digital Portfolio",
+  description:
+    "Software engineer and project manager. Make it work. Make it right.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

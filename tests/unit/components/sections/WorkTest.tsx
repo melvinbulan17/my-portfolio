@@ -37,6 +37,33 @@ describe("Work", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("leaves out hidden projects", () => {
+    render(
+      <Work
+        projects={[project("Shown"), { ...project("Gone"), hidden: true }]}
+        sideProjects={[side("Tool A"), { ...side("Tool B"), hidden: true }]}
+      />,
+    );
+
+    expect(screen.getByText("Shown")).toBeInTheDocument();
+    expect(screen.queryByText("Gone")).not.toBeInTheDocument();
+    expect(screen.getByText("Tool A")).toBeInTheDocument();
+    expect(screen.queryByText("Tool B")).not.toBeInTheDocument();
+  });
+
+  it("drops the side projects heading when every side project is hidden", () => {
+    render(
+      <Work
+        projects={[project("Shown")]}
+        sideProjects={[{ ...side("Tool A"), hidden: true }]}
+      />,
+    );
+
+    expect(
+      screen.queryByRole("heading", { name: "Side projects" }),
+    ).not.toBeInTheDocument();
+  });
+
   it("lists side projects under their own heading after the selected work", () => {
     render(
       <Work

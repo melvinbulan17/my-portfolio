@@ -58,12 +58,30 @@
     backwards;
   --animate-reveal: reveal 480ms var(--ease-out-expo) var(--reveal-at, 0ms)
     backwards;
+  --animate-rise-in: rise-in 700ms var(--ease-out-expo) var(--load-at, 0ms)
+    backwards;
+  --animate-settle: settle 1100ms var(--ease-out-expo) var(--load-at, 0ms)
+    backwards;
   --animate-draw: draw 350ms var(--ease-out-expo) var(--reveal-at, 0ms)
     backwards;
 
   @keyframes reveal {
     from {
       translate: 0 105%;
+    }
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      translate: 0 24px;
+    }
+  }
+
+  @keyframes settle {
+    from {
+      opacity: 0;
+      scale: 1.05;
     }
   }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
@@ -31,7 +32,7 @@ export function Nav({ links, resumeHref }: NavProps) {
       aria-label="Main"
       className="relative flex h-24 items-center justify-between"
     >
-      <a href="#top" onClick={close} className="block">
+      <Link href="/#top" onClick={close} className="block">
         <Image
           src="/logos/m-mark.svg"
           alt="Home"
@@ -39,7 +40,7 @@ export function Nav({ links, resumeHref }: NavProps) {
           height={40}
           priority
         />
-      </a>
+      </Link>
 
       <button
         type="button"

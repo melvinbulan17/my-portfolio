@@ -41,6 +41,20 @@ const project = {
 };
 
 describe("ProjectCard", () => {
+  it("makes the case study the main button when there is one", () => {
+    render(<ProjectCard {...project} caseStudyHref="/work/signing-portal" />);
+
+    expect(
+      screen.getByRole("link", { name: "Read case study" }),
+    ).toHaveAttribute("href", "/work/signing-portal");
+    expect(
+      screen.getByRole("link", { name: "Signing Portal: View code" }),
+    ).toHaveAttribute("href", "https://github.com/example");
+    expect(
+      screen.getByRole("link", { name: "Signing Portal: View code" }),
+    ).toHaveClass("text-accent-bright");
+  });
+
   it("renders the title, tags, summary and every action", () => {
     render(<ProjectCard {...project} />);
 

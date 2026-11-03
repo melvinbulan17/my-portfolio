@@ -33,7 +33,7 @@ describe("site content", () => {
       sideProjects
         .filter((project) => !project.hidden)
         .map((project) => project.title),
-    ).toEqual(["This portfolio"]);
+    ).toEqual(["My Digital Portfolio"]);
   });
 
   it("gives every side project one or two links that leave the site", () => {
@@ -63,7 +63,7 @@ describe("site content", () => {
 
   it("introduces the current role in the hero and terminal", () => {
     expect(hero.intro).toBe(
-      "Currently a software engineer and project manager on a public key infrastructure (PKI) web application at a Swiss startup.",
+      "Currently a software engineer and project manager on a public key infrastructure (PKI) web application at a Swiss company.",
     );
     expect(terminalLines[1]).toEqual({
       kind: "out",

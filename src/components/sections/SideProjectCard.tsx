@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { CSSProperties } from "react";
 
 import { riseClass } from "@/components/sections/RiseIn";
+import { Button } from "@/components/ui/Button";
 import { TagList } from "@/components/ui/Tag";
 import { TextLink } from "@/components/ui/TextLink";
 import { cn } from "@/lib/cn";
@@ -16,6 +17,7 @@ export function SideProjectCard({
   summary,
   tags,
   links,
+  caseStudyHref,
   style,
 }: SideProjectCardProps) {
   return (
@@ -34,19 +36,32 @@ export function SideProjectCard({
           {summary}
         </p>
         <TagList tags={tags} className="mb-6" />
-        <ul className="mt-auto flex flex-wrap gap-6">
-          {links.map((link) => (
-            <li key={link.label}>
-              <TextLink href={link.href} aria-label={`${title}: ${link.label}`}>
-                {link.label}
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="ml-1 inline size-3.5 align-[-2px] transition-transform duration-240 ease-out-expo motion-safe:group-hover/card:translate-x-0.5 motion-safe:group-hover/card:-translate-y-0.5"
-                />
-              </TextLink>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-4">
+          {caseStudyHref && (
+            <Button
+              href={caseStudyHref}
+              aria-label={`${title}: Read case study`}
+            >
+              Read case study
+            </Button>
+          )}
+          <ul className="flex flex-wrap gap-6">
+            {links.map((link) => (
+              <li key={link.label}>
+                <TextLink
+                  href={link.href}
+                  aria-label={`${title}: ${link.label}`}
+                >
+                  {link.label}
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="ml-1 inline size-3.5 align-[-2px] transition-transform duration-240 ease-out-expo motion-safe:group-hover/card:translate-x-0.5 motion-safe:group-hover/card:-translate-y-0.5"
+                  />
+                </TextLink>
+              </li>
+            ))}
+          </ul>
+        </div>
       </article>
     </div>
   );

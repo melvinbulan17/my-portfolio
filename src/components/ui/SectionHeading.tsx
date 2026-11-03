@@ -6,6 +6,7 @@ export type SectionHeadingProps = {
   id?: string;
   onPaper?: boolean;
   className?: string;
+  lineClassName?: string;
 };
 
 export function SectionHeading({
@@ -14,6 +15,7 @@ export function SectionHeading({
   id,
   onPaper,
   className,
+  lineClassName,
 }: SectionHeadingProps) {
   return (
     <div className={cn("mb-16 flex items-baseline gap-4", className)}>
@@ -34,6 +36,7 @@ export function SectionHeading({
         className={cn(
           "h-px flex-1 -translate-y-1.5",
           onPaper ? "bg-line-paper" : "bg-line-dark",
+          lineClassName,
         )}
       />
     </div>

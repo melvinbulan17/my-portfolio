@@ -43,6 +43,22 @@ describe("SideProjectCard", () => {
     ).toHaveAttribute("target", "_blank");
   });
 
+  it("only shows a case study button when there is one", () => {
+    const { rerender } = render(<SideProjectCard {...project} />);
+
+    expect(
+      screen.queryByRole("link", { name: "Cert Checker: Read case study" }),
+    ).not.toBeInTheDocument();
+
+    rerender(
+      <SideProjectCard {...project} caseStudyHref="/work/cert-checker" />,
+    );
+
+    expect(
+      screen.getByRole("link", { name: "Cert Checker: Read case study" }),
+    ).toHaveAttribute("href", "/work/cert-checker");
+  });
+
   it("is a square bordered card", () => {
     render(<SideProjectCard {...project} />);
 

@@ -15,19 +15,33 @@ import {
   siteTagline,
   socialLinks,
 } from "@/content/site";
+import { siteUrl } from "@/lib/site";
 
 const firaCode = Fira_Code({
   variable: "--font-fira-code",
   subsets: ["latin"],
 });
 
+const siteTitle = "MBulan | Digital Portfolio";
+const siteDescription =
+  "Software engineer and project manager. Make it work. Make it right.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
-  title: "MBulan | Digital Portfolio",
-  description:
-    "Software engineer and project manager. Make it work. Make it right.",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "MBulan",
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+  },
+  twitter: { card: "summary_large_image" },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -113,7 +113,7 @@ export const projects: Project[] = [
 export const sideProjects: SideProject[] = [
   {
     title: "My Digital Portfolio",
-    summary: "How I took my own site from first idea to release.",
+    summary: "The current site, designed and built from scratch.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     links: [
       { label: "Code", href: "https://github.com/melvinbulan17/my-portfolio" },

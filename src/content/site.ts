@@ -15,11 +15,11 @@ export const copyrightYear = 2026;
 export const resumeHref = "/resume.pdf";
 
 export const navLinks: NavLink[] = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Tools", href: "#tools" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Tools", href: "/#tools" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const socialLinks: SocialLink[] = [
@@ -45,7 +45,7 @@ export const hero = {
     text: "means moon in Filipino",
   },
   intro:
-    "Currently a software engineer and project manager on a public key infrastructure (PKI) web application at a Swiss startup.",
+    "Currently a software engineer and project manager on a public key infrastructure (PKI) web application at a Swiss company.",
   primaryAction: { label: "View Works", href: "#work" },
   secondaryAction: { label: "More about me →", href: "#about" },
 };
@@ -92,8 +92,9 @@ export const projects: Project[] = [
     },
     actions: [
       { label: "Live site", href: "https://dummio.vercel.app/" },
-      { label: "View code", href: "https://github.com/melvinbulan17/dummio" },
+      { label: "Code", href: "https://github.com/melvinbulan17/dummio" },
     ],
+    caseStudyHref: "/work/dummio",
   },
   {
     hidden: true,
@@ -111,12 +112,13 @@ export const projects: Project[] = [
 
 export const sideProjects: SideProject[] = [
   {
-    title: "This portfolio",
-    summary: "The site you're on, designed and built from scratch.",
+    title: "My Digital Portfolio",
+    summary: "How I took my own site from first idea to release.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     links: [
       { label: "Code", href: "https://github.com/melvinbulan17/my-portfolio" },
     ],
+    caseStudyHref: "/work/portfolio",
   },
   {
     hidden: true,

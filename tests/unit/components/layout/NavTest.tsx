@@ -33,7 +33,7 @@ describe("Nav", () => {
 
     expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute(
       "href",
-      "#top",
+      "/#top",
     );
   });
 

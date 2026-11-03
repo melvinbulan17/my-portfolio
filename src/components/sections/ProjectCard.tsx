@@ -1,9 +1,11 @@
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
 import { RiseIn, riseClass } from "@/components/sections/RiseIn";
 import { Button } from "@/components/ui/Button";
 import { TagList } from "@/components/ui/Tag";
+import { TextLink } from "@/components/ui/TextLink";
 import { cn } from "@/lib/cn";
 import { cardTextDelay } from "@/lib/motion";
 import type { Project } from "@/types/site";
@@ -23,6 +25,7 @@ export function ProjectCard({
   summary,
   image,
   actions,
+  caseStudyHref,
   flip,
 }: ProjectCardProps) {
   return (
@@ -64,13 +67,34 @@ export function ProjectCard({
           </h3>
           <TagList tags={tags} className="mb-6" />
           <p className="mb-6 text-text-on-dark-muted">{summary}</p>
-          <div className="flex flex-wrap gap-4">
-            {actions.map((action) => (
-              <Button key={action.label} href={action.href}>
-                {action.label}
-              </Button>
-            ))}
-          </div>
+          {caseStudyHref ? (
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Button href={caseStudyHref}>Read case study</Button>
+              <div className="flex gap-6">
+                {actions.map((action) => (
+                  <TextLink
+                    key={action.label}
+                    href={action.href}
+                    aria-label={`${title}: ${action.label}`}
+                  >
+                    {action.label}
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      className="ml-1 inline size-3.5 align-[-2px]"
+                    />
+                  </TextLink>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-4">
+              {actions.map((action) => (
+                <Button key={action.label} href={action.href}>
+                  {action.label}
+                </Button>
+              ))}
+            </div>
+          )}
         </div>
       </RiseIn>
     </article>

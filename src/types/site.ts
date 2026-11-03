@@ -20,6 +20,7 @@ export type Project = {
   summary: string;
   image?: { src: string; alt: string };
   actions: NavLink[];
+  caseStudyHref?: string;
   hidden?: boolean;
 };
 
@@ -28,5 +29,33 @@ export type SideProject = {
   summary: string;
   tags: string[];
   links: NavLink[];
+  caseStudyHref?: string;
   hidden?: boolean;
+};
+
+export type CaseStudyImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+export type CaseStudyBlock =
+  | { kind: "text"; text: string }
+  | { kind: "topic"; title: string; text: string }
+  | { kind: "list"; items: string[] }
+  | { kind: "points"; title: string; points: string[] }
+  | { kind: "facts"; facts: { label: string; value: string }[] }
+  | { kind: "shots"; shots: CaseStudyImage[]; crop?: boolean }
+  | ({ kind: "figure"; title: string } & CaseStudyImage);
+
+export type CaseStudy = {
+  slug: string;
+  title: string;
+  tagline: string;
+  description: string;
+  liveHref?: string;
+  codeHref: string;
+  heroImage: CaseStudyImage;
+  sections: { id: string; title: string; blocks: CaseStudyBlock[] }[];
 };

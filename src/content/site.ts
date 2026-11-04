@@ -8,7 +8,7 @@ import type {
 
 export const siteOwner = "Melvin S. Bulan";
 
-export const siteTagline = "Plan. Execute. Excel.";
+export const siteTagline = "Make it work. Make it right.";
 
 export const copyrightYear = 2026;
 
@@ -51,8 +51,8 @@ export const hero = {
 };
 
 export const terminalLines: TerminalLine[] = [
-  { kind: "cmd", text: "whoami" },
-  { kind: "out", text: "software-engineer, project-manager" },
+  { kind: "cmd", text: "uname -a" },
+  { kind: "out", text: "digital portfolio v1.0.0" },
   { kind: "gap" },
   { kind: "cmd", text: "openssl verify -CAfile root.pem career.crt" },
   {

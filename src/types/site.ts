@@ -55,6 +55,7 @@ export type CaseStudy = {
   tagline: string;
   description: string;
   liveHref?: string;
+  storeHref?: string;
   codeHref: string;
   heroImage: CaseStudyImage;
   sections: { id: string; title: string; blocks: CaseStudyBlock[] }[];

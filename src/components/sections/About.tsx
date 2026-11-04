@@ -1,20 +1,28 @@
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import type { CSSProperties } from "react";
+
+import { RevealHeading } from "@/components/sections/RevealHeading";
+import { RiseIn } from "@/components/sections/RiseIn";
 import type { AboutContent } from "@/content/about";
+import { cn } from "@/lib/cn";
+import { arrive } from "@/lib/motion";
 
 export type AboutProps = AboutContent;
+
+const order = (index: number) =>
+  ({ "--rise-delay": `${index * 90}ms` }) as CSSProperties;
 
 export function About({ story, glanceTitle, glance }: AboutProps) {
   return (
     <section
       id="about"
-      className="border-t border-line-dark py-32 max-[760px]:py-16"
+      className="border-t border-line-dark py-24 max-[760px]:py-16"
     >
       <div className="wrap">
-        <SectionHeading number="02." title="About" />
-        <div className="grid grid-cols-[1.4fr_1fr] gap-16 max-[760px]:grid-cols-1">
+        <RevealHeading number="02." title="About" />
+        <RiseIn className="grid grid-cols-[1.4fr_1fr] gap-16 max-[760px]:grid-cols-1">
           <div className="space-y-6 text-text-on-dark-muted">
             {story.map((paragraph, index) => (
-              <p key={index}>
+              <p key={index} style={order(index)} className={arrive}>
                 {paragraph.map((segment, segmentIndex) =>
                   typeof segment === "string" ? (
                     segment
@@ -32,7 +40,11 @@ export function About({ story, glanceTitle, glance }: AboutProps) {
           </div>
           <aside
             aria-labelledby="about-glance"
-            className="self-start border border-line-dark bg-surface-800 p-8"
+            style={order(story.length)}
+            className={cn(
+              "self-start border border-line-dark bg-surface-800 p-8",
+              arrive,
+            )}
           >
             <h3
               id="about-glance"
@@ -49,7 +61,7 @@ export function About({ story, glanceTitle, glance }: AboutProps) {
               ))}
             </dl>
           </aside>
-        </div>
+        </RiseIn>
       </div>
     </section>
   );

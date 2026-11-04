@@ -19,7 +19,7 @@ function Highlighted({ text, highlight }: { text: string; highlight: string }) {
   ));
 }
 
-const lineClass = "block min-h-[22px] whitespace-pre-wrap";
+const lineClass = "block min-h-[1.375rem] whitespace-pre-wrap";
 const typing = {
   "--type-char": `${typeChar * 1000}ms`,
 } as CSSProperties;
@@ -40,24 +40,24 @@ export function TerminalCard({
     <div
       aria-hidden="true"
       style={typing}
-      className="border border-line-dark bg-surface-800 text-[13px]/[22px]"
+      className="border border-line-dark bg-surface-800 text-[0.875rem]/[1.375rem]"
     >
       <div className="flex items-center gap-1.5 border-b border-line-dark px-4 py-2.5">
         <i className="size-2.5 rounded-full bg-line-dark" />
         <i className="size-2.5 rounded-full bg-line-dark" />
         <i className="size-2.5 rounded-full bg-line-dark" />
-        <span className="ml-auto text-[12px] text-text-on-dark-muted">
+        <span className="ml-auto text-[0.75rem] text-text-on-dark-muted">
           {title}
         </span>
       </div>
       <div className="@container px-6 pt-4 pb-6">
         <div
           style={{ "--cols": columns } as CSSProperties}
-          className="text-[length:min(13px,calc(100cqi/(var(--cols)*0.6)))]"
+          className="text-[length:min(0.875rem,calc(100cqi/(var(--cols)*0.6)))]"
         >
           {timeline(lines).map((line, index) => {
             if (line.kind === "gap") {
-              return <span key={index} className="block h-[22px]" />;
+              return <span key={index} className="block h-[1.375rem]" />;
             }
 
             if (line.kind === "cmd") {

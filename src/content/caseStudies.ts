@@ -7,6 +7,8 @@ const dummio: CaseStudy = {
   description:
     "How I planned, built, tested and released Dummio, a browser extension that fills web forms with realistic test data.",
   liveHref: "https://dummio.vercel.app/",
+  storeHref:
+    "https://chromewebstore.google.com/detail/dummio/ajpljdboafipblchifcpgnmjhdpilopb",
   codeHref: "https://github.com/melvinbulan17/dummio",
   heroImage: {
     src: "/images/dummio/popup-after-fill.png",
@@ -245,6 +247,11 @@ const dummio: CaseStudy = {
           alt: "Workflow diagram of a release. Prepare the release and test the built zips in both browsers. Then three checklists. Chrome Web Store: $5 developer account, publisher name, trader declaration, listing and screenshots, a reason for each permission and a data use statement, then submit and wait for review. Firefox Add-ons: free developer account, add-on ID, data permissions, listing and screenshots, privacy policy and source code zip, then submit and wait for review. Website: hosting on Vercel, privacy policy page, analytics after Allow, Search Console, sitemap and the site name on Google, then merge and it deploys itself. All three end with checking the live version myself and pointing the site's buttons at the store listings.",
           width: 1440,
           height: 1132,
+        },
+        {
+          kind: "topic",
+          title: "Results",
+          text: "Dummio is published on the Chrome Web Store, with its own website and public code. The Firefox listing is waiting on Mozilla's review.",
         },
         {
           kind: "topic",

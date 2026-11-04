@@ -1,11 +1,11 @@
 import { ArrowUpRight } from "lucide-react";
 import type { CSSProperties } from "react";
 
-import { riseClass } from "@/components/sections/RiseIn";
 import { Button } from "@/components/ui/Button";
 import { TagList } from "@/components/ui/Tag";
 import { TextLink } from "@/components/ui/TextLink";
 import { cn } from "@/lib/cn";
+import { riseClass } from "@/lib/motion";
 import type { SideProject } from "@/types/site";
 
 export type SideProjectCardProps = SideProject & {
@@ -32,7 +32,7 @@ export function SideProjectCard({
         <h4 title={title} className="mb-2 truncate text-h3">
           {title}
         </h4>
-        <p className="mb-6 line-clamp-2 min-h-12 text-[15px]/6 text-text-on-dark-muted">
+        <p className="mb-6 line-clamp-2 min-h-12 text-[0.875rem]/6 text-text-on-dark-muted">
           {summary}
         </p>
         <TagList tags={tags} className="mb-6" />
@@ -55,7 +55,7 @@ export function SideProjectCard({
                   {link.label}
                   <ArrowUpRight
                     aria-hidden="true"
-                    className="ml-1 inline size-3.5 align-[-2px] transition-transform duration-240 ease-out-expo motion-safe:group-hover/card:translate-x-0.5 motion-safe:group-hover/card:-translate-y-0.5"
+                    className="ml-1 inline size-3.5 align-[-0.125rem] transition-transform duration-240 ease-out-expo motion-safe:group-hover/card:translate-x-0.5 motion-safe:group-hover/card:-translate-y-0.5"
                   />
                 </TextLink>
               </li>

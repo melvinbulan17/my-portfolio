@@ -50,7 +50,7 @@ describe("Skills", () => {
 
     expect(container.querySelector("section#tools")).toHaveClass(
       "border-t",
-      "py-32",
+      "py-24",
     );
     expect(
       screen.getByRole("region", { name: "Tools & Skills" }),
@@ -101,20 +101,20 @@ describe("Skills", () => {
     expect(second.style.getPropertyValue("--rise-delay")).toBe("60ms");
   });
 
-  it("keeps the real content to five groups of four to six skills", () => {
+  it("keeps the real content to five groups of three to nine skills", () => {
     expect(skillGroups.map((group) => group.label)).toEqual([
       "Project management",
-      "Quality & testing",
-      "PKI domain",
-      "Tooling",
-      "Building with",
+      "Testing",
+      "PKI",
+      "Development",
+      "Tools",
     ]);
     for (const group of skillGroups) {
-      expect(group.skills.length).toBeGreaterThanOrEqual(4);
-      expect(group.skills.length).toBeLessThanOrEqual(6);
+      expect(group.skills.length).toBeGreaterThanOrEqual(3);
+      expect(group.skills.length).toBeLessThanOrEqual(9);
     }
     expect(skillGroups[0].skills[0]).toMatchObject({
-      name: "YouTrack",
+      name: "SDLC",
       icon: { set: "lucide" },
     });
   });

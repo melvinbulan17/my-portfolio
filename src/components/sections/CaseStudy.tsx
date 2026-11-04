@@ -8,19 +8,16 @@ import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TextLink } from "@/components/ui/TextLink";
 import { cn } from "@/lib/cn";
+import { arrive, drawLine } from "@/lib/motion";
 import type {
   CaseStudy as CaseStudyContent,
   CaseStudyBlock,
 } from "@/types/site";
 
-const arrive =
-  "motion-safe:group-data-[stage=armed]/rise:translate-y-6 motion-safe:group-data-[stage=armed]/rise:opacity-0 motion-safe:group-data-[stage=in]/rise:transition-[opacity,translate] motion-safe:group-data-[stage=in]/rise:duration-700 motion-safe:group-data-[stage=in]/rise:ease-out-expo motion-safe:group-data-[stage=in]/rise:delay-(--rise-delay)";
 const settle =
   "motion-safe:group-data-[stage=armed]/rise:scale-[0.97] motion-safe:group-data-[stage=armed]/rise:opacity-0 motion-safe:group-data-[stage=in]/rise:transition-[opacity,scale] motion-safe:group-data-[stage=in]/rise:duration-900 motion-safe:group-data-[stage=in]/rise:ease-out-expo motion-safe:group-data-[stage=in]/rise:delay-(--rise-delay)";
 const unroll =
   "motion-safe:group-data-[stage=armed]/rise:[clip-path:inset(0_0_100%_0)] motion-safe:group-data-[stage=in]/rise:[clip-path:inset(0_0_0_0)] motion-safe:group-data-[stage=in]/rise:transition-[clip-path] motion-safe:group-data-[stage=in]/rise:duration-1200 motion-safe:group-data-[stage=in]/rise:ease-[cubic-bezier(0.65,0,0.35,1)]";
-const drawLine =
-  "origin-left motion-safe:group-data-[stage=armed]/rise:scale-x-0 motion-safe:group-data-[stage=in]/rise:transition-[scale] motion-safe:group-data-[stage=in]/rise:delay-150 motion-safe:group-data-[stage=in]/rise:duration-900 motion-safe:group-data-[stage=in]/rise:ease-out-expo";
 const bullets = "grid list-disc gap-3 pl-5 marker:text-accent-bright";
 const row = "border-b border-line-dark py-3";
 
@@ -47,7 +44,7 @@ function Outbound({ children }: { children: ReactNode }) {
       {children}
       <ArrowUpRight
         aria-hidden="true"
-        className="ml-1 inline size-3.5 align-[-2px]"
+        className="ml-1 inline size-3.5 align-[-0.125rem]"
       />
     </>
   );
@@ -104,7 +101,7 @@ function Block({ block }: { block: CaseStudyBlock }) {
                 key={label}
                 style={stagger(index)}
                 className={cn(
-                  "grid grid-cols-[120px_minmax(0,1fr)] gap-x-6 gap-y-1 max-[640px]:grid-cols-1",
+                  "grid grid-cols-[7.5rem_minmax(0,1fr)] gap-x-6 gap-y-1 max-[640px]:grid-cols-1",
                   row,
                   arrive,
                 )}
@@ -138,7 +135,7 @@ function Block({ block }: { block: CaseStudyBlock }) {
                 alt={shot.alt}
                 width={shot.width}
                 height={shot.height}
-                sizes="(max-width: 760px) 100vw, 720px"
+                sizes="(max-width: 760px) 100vw, (min-width: 1536px) 1260px, 720px"
                 className="motion-safe:transition-transform motion-safe:duration-480 motion-safe:ease-out-expo motion-safe:group-hover/shot:scale-[1.02]"
               />
             </div>
@@ -159,7 +156,7 @@ function Block({ block }: { block: CaseStudyBlock }) {
               alt={block.alt}
               width={block.width}
               height={block.height}
-              sizes="720px"
+              sizes="(min-width: 1536px) 1260px, 720px"
               className="min-w-150"
             />
           </div>
@@ -172,6 +169,7 @@ export function CaseStudy({
   title,
   tagline,
   liveHref,
+  storeHref,
   codeHref,
   heroImage,
   sections,
@@ -194,14 +192,14 @@ export function CaseStudy({
               All work
             </TextLink>
           </div>
-          <h1 className="mt-10 overflow-hidden text-display tracking-[-0.01em] max-[760px]:text-[40px]/12">
+          <h1 className="mt-10 overflow-hidden text-display tracking-[-0.01em] max-[760px]:text-[2.25rem]/11">
             <span className="block [--reveal-at:60ms] motion-safe:animate-reveal">
               {title}
             </span>
           </h1>
           <p
             style={loadAt(200)}
-            className="mt-2 text-role text-balance motion-safe:animate-rise-in max-[1000px]:text-[24px]/8"
+            className="mt-2 text-role text-balance motion-safe:animate-rise-in max-[1000px]:text-[1.75rem]/9"
           >
             {tagline}
           </p>
@@ -210,6 +208,11 @@ export function CaseStudy({
             className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 motion-safe:animate-rise-in"
           >
             {liveHref && <Button href={liveHref}>Live site</Button>}
+            {storeHref && (
+              <TextLink href={storeHref}>
+                <Outbound>Chrome Web Store</Outbound>
+              </TextLink>
+            )}
             <TextLink href={codeHref}>
               <Outbound>Code</Outbound>
             </TextLink>
@@ -218,7 +221,7 @@ export function CaseStudy({
         <div
           className={cn(
             "overflow-hidden",
-            !wideHero && "max-[760px]:mx-auto max-[760px]:max-w-[320px]",
+            !wideHero && "max-[760px]:mx-auto max-[760px]:max-w-[20rem]",
           )}
         >
           <Image
@@ -227,14 +230,18 @@ export function CaseStudy({
             width={heroImage.width}
             height={heroImage.height}
             priority
-            sizes={wideHero ? "(max-width: 1120px) 100vw, 1056px" : "400px"}
+            sizes={
+              wideHero
+                ? "(max-width: 1120px) 100vw, (min-width: 1536px) 1848px, 1056px"
+                : "(min-width: 1536px) 700px, 400px"
+            }
             style={loadAt(240)}
             className="motion-safe:animate-settle"
           />
         </div>
       </header>
 
-      <div className="wrap grid grid-cols-[240px_minmax(0,720px)] gap-24 pb-32 max-[1000px]:grid-cols-1 max-[760px]:pb-16">
+      <div className="wrap grid grid-cols-[15rem_minmax(0,45rem)] gap-24 pb-32 max-[1000px]:grid-cols-1 max-[760px]:pb-16">
         <CaseStudyContents
           sections={sections.map(({ id, title: name }) => ({
             id,
@@ -268,6 +275,11 @@ export function CaseStudy({
             {liveHref && (
               <TextLink href={liveHref}>
                 <Outbound>Live site</Outbound>
+              </TextLink>
+            )}
+            {storeHref && (
+              <TextLink href={storeHref}>
+                <Outbound>Chrome Web Store</Outbound>
               </TextLink>
             )}
             <TextLink href={codeHref}>

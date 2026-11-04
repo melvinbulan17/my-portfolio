@@ -16,7 +16,7 @@ export function MoonWord({ word, label, text }: MoonWordProps) {
         data-note
         className="pointer-events-none absolute right-0 bottom-[calc(100%-0.1em)] flex flex-col items-end max-[1099px]:hidden"
       >
-        <span className="translate-y-1 text-right text-[13px]/5 font-normal tracking-normal whitespace-nowrap text-text-on-dark-muted opacity-0 transition-[opacity,translate] duration-160 ease-out-expo group-hover/moon:translate-y-0 group-hover/moon:opacity-100 group-hover/moon:duration-240 motion-reduce:translate-y-0 motion-reduce:transition-none">
+        <span className="translate-y-1 text-right text-[0.875rem]/5 font-normal tracking-normal whitespace-nowrap text-text-on-dark-muted opacity-0 transition-[opacity,translate] duration-160 ease-out-expo group-hover/moon:translate-y-0 group-hover/moon:opacity-100 group-hover/moon:duration-240 motion-reduce:translate-y-0 motion-reduce:transition-none">
           <span className="block text-accent-bright">{label}</span>
           <span className="block">{text}</span>
         </span>
@@ -27,7 +27,7 @@ export function MoonWord({ word, label, text }: MoonWordProps) {
           strokeWidth={1.5}
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="mt-1 mr-11 h-10 w-[54px] text-accent-bright"
+          className="mt-1 mr-11 h-10 w-[3.375rem] text-accent-bright"
         >
           <path
             pathLength={1}

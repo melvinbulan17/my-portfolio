@@ -54,7 +54,7 @@ describe("site content", () => {
   });
 
   it("uses the short footer line", () => {
-    expect(siteTagline).toBe("Plan. Execute. Excel.");
+    expect(siteTagline).toBe("Make it work. Make it right.");
   });
 
   it("points the resume link at a file in public", () => {
@@ -67,7 +67,7 @@ describe("site content", () => {
     );
     expect(terminalLines[1]).toEqual({
       kind: "out",
-      text: "software-engineer, project-manager",
+      text: "digital portfolio v1.0.0",
     });
   });
 

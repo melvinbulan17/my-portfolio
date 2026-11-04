@@ -1,24 +1,39 @@
+import type { CSSProperties } from "react";
+
 import { ContactForm } from "@/components/sections/ContactForm";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { RevealHeading } from "@/components/sections/RevealHeading";
+import { RiseIn } from "@/components/sections/RiseIn";
 import { contact } from "@/content/contact";
+import { cn } from "@/lib/cn";
+import { arrive } from "@/lib/motion";
+
+const second = { "--rise-delay": "90ms" } as CSSProperties;
 
 export function Contact() {
   return (
     <section
       id="contact"
-      className="border-t border-line-dark py-32 max-[760px]:py-16"
+      className="border-t border-line-dark py-24 max-[760px]:py-16"
     >
       <div className="wrap">
-        <SectionHeading number={contact.number} title={contact.title} />
+        <RevealHeading number={contact.number} title={contact.title} />
         <div className="grid grid-cols-[1fr_1.2fr] items-start gap-16 max-[760px]:grid-cols-1">
-          <div>
-            <h2 className="mb-6 text-[56px] leading-16 font-bold tracking-[-0.01em] max-[760px]:text-[36px] max-[760px]:leading-11">
+          <RiseIn>
+            <h2
+              className={cn(
+                "mb-6 text-display leading-18 font-bold tracking-[-0.01em] max-[1000px]:text-[2.25rem] max-[1000px]:leading-11",
+                arrive,
+              )}
+            >
               {contact.heading}
             </h2>
-            <p className="mb-8 max-w-110 text-text-on-dark-muted">
+            <p
+              style={second}
+              className={cn("mb-8 max-w-110 text-text-on-dark-muted", arrive)}
+            >
               {contact.lede}
             </p>
-          </div>
+          </RiseIn>
           <ContactForm />
         </div>
       </div>

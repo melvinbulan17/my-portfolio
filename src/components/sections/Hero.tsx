@@ -34,7 +34,7 @@ export function Hero({
           <p className="mb-4 text-eyebrow text-text-on-dark-muted">
             {greeting}
           </p>
-          <h1 className="text-display tracking-[-0.01em] select-none max-[760px]:text-[40px]/12">
+          <h1 className="text-display tracking-[-0.01em] select-none max-[1100px]:text-[length:min(4rem,calc((100vw-8rem)*0.066))]/[1.125] max-[760px]:text-[2.25rem]/11">
             {nameNote ? (
               <>
                 {name.slice(0, split)}
@@ -48,7 +48,7 @@ export function Hero({
               name
             )}
           </h1>
-          <p className="mt-2 text-role max-[760px]:text-[24px]/8">
+          <p className="mt-2 text-role max-[760px]:text-[1.75rem]/9">
             <span className="inline-block [clip-path:inset(0)]">
               <span className="inline-block motion-safe:animate-reveal">
                 {role.lead}
@@ -65,7 +65,7 @@ export function Hero({
               </em>
             </span>
           </p>
-          <p className="mt-8 max-w-[520px] text-text-on-dark-muted">{intro}</p>
+          <p className="mt-8 max-w-[32.5rem] text-text-on-dark">{intro}</p>
           <div className="mt-8 flex flex-wrap items-center gap-8">
             <Button href={primaryAction.href}>{primaryAction.label}</Button>
             <TextLink href={secondaryAction.href}>

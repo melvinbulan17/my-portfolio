@@ -1,5 +1,5 @@
+import { RevealHeading } from "@/components/sections/RevealHeading";
 import { SkillList } from "@/components/sections/SkillList";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { SkillGroup } from "@/types/skills";
 
 export type SkillsProps = {
@@ -11,14 +11,10 @@ export function Skills({ groups }: SkillsProps) {
     <section
       id="tools"
       aria-labelledby="tools-heading"
-      className="border-t border-line-dark py-32 max-[760px]:py-16"
+      className="border-t border-line-dark py-24 max-[760px]:py-16"
     >
       <div className="wrap">
-        <SectionHeading
-          id="tools-heading"
-          number="04."
-          title="Tools & Skills"
-        />
+        <RevealHeading id="tools-heading" number="04." title="Tools & Skills" />
         <SkillList groups={groups} />
       </div>
     </section>

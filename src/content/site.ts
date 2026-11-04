@@ -8,7 +8,7 @@ import type {
 
 export const siteOwner = "Melvin S. Bulan";
 
-export const siteTagline = "Plan. Execute. Excel.";
+export const siteTagline = "Make it work. Make it right.";
 
 export const copyrightYear = 2026;
 

@@ -22,25 +22,25 @@
   --radius-*: initial;
   --radius-full: 9999px;
 
-  --text-display: 64px;
-  --text-display--line-height: 72px;
+  --text-display: 4rem;
+  --text-display--line-height: 4.5rem;
   --text-display--font-weight: 700;
-  --text-role: 36px;
-  --text-role--line-height: 44px;
+  --text-role: 2.25rem;
+  --text-role--line-height: 2.75rem;
   --text-role--font-weight: 400;
-  --text-h2: 32px;
-  --text-h2--line-height: 40px;
-  --text-h2--font-weight: 500;
-  --text-h3: 20px;
-  --text-h3--line-height: 28px;
+  --text-h2: 2.25rem;
+  --text-h2--line-height: 2.75rem;
+  --text-h2--font-weight: 600;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.75rem;
   --text-h3--font-weight: 600;
-  --text-body: 16px;
-  --text-body--line-height: 26px;
-  --text-label: 14px;
-  --text-label--line-height: 20px;
+  --text-body: 1rem;
+  --text-body--line-height: 1.625rem;
+  --text-label: 0.875rem;
+  --text-label--line-height: 1.25rem;
   --text-label--font-weight: 600;
-  --text-eyebrow: 13px;
-  --text-eyebrow--line-height: 20px;
+  --text-eyebrow: 0.875rem;
+  --text-eyebrow--line-height: 1.25rem;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -128,6 +128,7 @@
 
 @layer base {
   html {
+    font-size: clamp(1rem, calc(1.171875vw - 0.125rem), 1.75rem);
     color-scheme: dark;
     scroll-padding-top: --spacing(24);
 
@@ -151,7 +152,7 @@
 }
 
 @utility wrap {
-  max-width: 1120px;
+  max-width: 70rem;
   margin-inline: auto;
   padding-inline: --spacing(8);
 }

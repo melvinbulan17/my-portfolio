@@ -20,7 +20,7 @@ import { skillGroups } from "@/content/skills";
 export default function Home() {
   return (
     <main className="flex-1">
-      <div className="flex flex-col lg:min-h-[calc(100dvh-6rem)]">
+      <div className="flex flex-col lg:min-h-[min(calc(100dvh-6rem),56rem)]">
         <Hero {...hero} terminalLines={terminalLines} />
       </div>
       <Marquee items={disciplines} />

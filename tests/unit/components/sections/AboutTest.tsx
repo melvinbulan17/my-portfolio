@@ -10,7 +10,7 @@ describe("About", () => {
 
     expect(container.querySelector("section#about")).toHaveClass(
       "border-t",
-      "py-32",
+      "py-24",
     );
     expect(
       screen.getByRole("heading", { level: 2, name: "About" }),
@@ -56,10 +56,10 @@ describe("About", () => {
     ]);
   });
 
-  it("tells the story in two paragraphs with the key roles in bold", () => {
+  it("tells the story in four paragraphs with the key roles in bold", () => {
     const { container } = render(<About {...about} />);
 
-    expect(container.querySelectorAll("p")).toHaveLength(2);
+    expect(container.querySelectorAll("p")).toHaveLength(4);
     expect(
       Array.from(container.querySelectorAll("strong")).map(
         (strong) => strong.textContent,

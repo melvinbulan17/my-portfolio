@@ -50,7 +50,7 @@ describe("Skills", () => {
 
     expect(container.querySelector("section#tools")).toHaveClass(
       "border-t",
-      "py-32",
+      "py-24",
     );
     expect(
       screen.getByRole("region", { name: "Tools & Skills" }),

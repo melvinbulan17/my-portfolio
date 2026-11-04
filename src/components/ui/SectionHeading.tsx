@@ -22,7 +22,7 @@ export function SectionHeading({
       <span
         aria-hidden="true"
         className={cn(
-          "text-[20px]",
+          "text-[1.25rem]",
           onPaper ? "text-accent" : "text-accent-bright",
         )}
       >

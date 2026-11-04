@@ -12,7 +12,7 @@ function List({ items, hidden }: { items: string[]; hidden?: boolean }) {
       {items.map((item) => (
         <li
           key={item}
-          className="flex items-center text-[20px]/7 font-semibold tracking-[0.04em] whitespace-nowrap uppercase after:mx-8 after:size-2 after:bg-accent after:content-['']"
+          className="flex items-center text-[1.25rem]/7 font-semibold tracking-[0.04em] whitespace-nowrap uppercase after:mx-8 after:size-2 after:bg-accent after:content-['']"
         >
           {item}
         </li>

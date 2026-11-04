@@ -32,7 +32,7 @@ export function ProjectCard({
     <article>
       <RiseIn
         className={cn(
-          "grid items-center gap-16 max-[1000px]:gap-10 max-[760px]:grid-cols-1 max-[760px]:gap-8 min-[761px]:min-h-[min(calc(100svh-12rem),760px)]",
+          "grid items-center gap-16 max-[1000px]:gap-10 max-[760px]:grid-cols-1 max-[760px]:gap-8 min-[761px]:min-h-[min(calc(100svh-12rem),47.5rem)]",
           flip ? "grid-cols-[1fr_1.5fr]" : "grid-cols-[1.5fr_1fr]",
         )}
       >
@@ -42,7 +42,7 @@ export function ProjectCard({
         >
           <div
             className={cn(
-              "group/shot relative grid aspect-[16/10] place-items-center overflow-hidden text-[13px] text-text-on-dark-muted min-[761px]:aspect-[4/3]",
+              "group/shot relative grid aspect-[16/10] place-items-center overflow-hidden text-[0.875rem] text-text-on-dark-muted min-[761px]:aspect-[4/3]",
               !image &&
                 "border border-dashed border-line-dark-strong transition-colors duration-240 ease-out-expo hover:border-text-on-dark-muted",
             )}
@@ -52,7 +52,7 @@ export function ProjectCard({
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes="(max-width: 760px) 100vw, 680px"
+                sizes="(max-width: 760px) 100vw, (min-width: 1536px) 1190px, 680px"
                 className="object-cover motion-safe:transition-transform motion-safe:duration-480 motion-safe:ease-out-expo motion-safe:group-hover/shot:scale-[1.025]"
               />
             ) : (
@@ -61,8 +61,8 @@ export function ProjectCard({
           </div>
         </div>
         <div data-slot="text" style={textDelay} className={riseClass}>
-          <p className="mb-2 text-[13px]/5 text-accent-bright">{kicker}</p>
-          <h3 className="mb-4 text-[28px]/9 font-semibold max-[760px]:text-[24px]/8">
+          <p className="mb-2 text-[0.875rem]/5 text-accent-bright">{kicker}</p>
+          <h3 className="mb-4 text-[1.75rem]/9 font-semibold max-[760px]:text-[1.75rem]/9">
             {title}
           </h3>
           <TagList tags={tags} className="mb-6" />
@@ -80,7 +80,7 @@ export function ProjectCard({
                     {action.label}
                     <ArrowUpRight
                       aria-hidden="true"
-                      className="ml-1 inline size-3.5 align-[-2px]"
+                      className="ml-1 inline size-3.5 align-[-0.125rem]"
                     />
                   </TextLink>
                 ))}

@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 function renderFooter() {
   render(
     <Footer
-      tagline="Plan. Execute. Excel."
+      tagline="Make it work. Make it right."
       navLinks={[{ label: "Work", href: "#work" }]}
       socialLinks={[
         {

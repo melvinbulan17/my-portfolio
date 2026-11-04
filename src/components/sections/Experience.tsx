@@ -12,7 +12,7 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
   return (
     <section
       id="experience"
-      className="border-t border-line-dark py-32 max-[760px]:py-16"
+      className="border-t border-line-dark py-24 max-[760px]:py-16"
     >
       <div className="wrap">
         <SectionHeading number="03." title="Experience" />
@@ -22,10 +22,10 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
               key={`${job.company}-${job.when}`}
               className="group grid gap-4 min-[761px]:grid-cols-[15rem_1fr] min-[761px]:gap-16"
             >
-              <div className="pl-8 text-[14px] leading-7 text-text-on-dark-muted transition-colors duration-150 ease-out group-hover:text-accent-bright min-[761px]:pl-0">
+              <div className="pl-8 text-[0.875rem] leading-7 text-text-on-dark-muted transition-colors duration-150 ease-out group-hover:text-accent-bright min-[761px]:pl-0">
                 {job.when}
                 {job.where && (
-                  <span className="block text-[13px] leading-5 text-text-on-dark-muted">
+                  <span className="block text-[0.875rem] leading-5 text-text-on-dark-muted">
                     {job.where}
                   </span>
                 )}
@@ -33,14 +33,14 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
               <div
                 className={cn(
                   "relative border-l pb-16 pl-8 group-last:border-l-transparent group-last:pb-0",
-                  "before:absolute before:top-[7px] before:-left-[7px] before:size-[13px] before:border before:border-accent before:content-['']",
+                  "before:absolute before:top-[0.4375rem] before:-left-[0.4375rem] before:size-[0.8125rem] before:border before:border-accent before:content-['']",
                   job.current
                     ? "border-accent before:bg-accent"
                     : "border-line-dark before:bg-surface-900",
                 )}
               >
                 <h3 className="text-h3">{job.title}</h3>
-                <p className="text-[14px] leading-5 text-text-on-dark-muted">
+                <p className="text-[0.875rem] leading-5 text-text-on-dark-muted">
                   {job.internship ? `${job.company} · Internship` : job.company}
                 </p>
                 {job.steps.length > 0 && (
@@ -49,8 +49,8 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
                       <li
                         key={step.title}
                         className={cn(
-                          "relative text-[15px] leading-6 font-semibold",
-                          "before:absolute before:top-[9px] before:-left-9 before:size-[7px] before:content-['']",
+                          "relative text-body leading-6 font-semibold",
+                          "before:absolute before:top-[0.5625rem] before:-left-9 before:size-[0.4375rem] before:content-['']",
                           step.current
                             ? "before:bg-accent-bright"
                             : "before:bg-line-dark-strong",
@@ -58,7 +58,7 @@ export function Experience({ jobs, resumeHref }: ExperienceProps) {
                       >
                         {step.title}
                         {step.current && (
-                          <span className="ml-2 border border-accent-bright px-1.5 align-[1px] text-[12px] text-accent-bright">
+                          <span className="ml-2 border border-accent-bright px-1.5 align-[0.0625rem] text-[0.75rem] text-accent-bright">
                             now
                           </span>
                         )}

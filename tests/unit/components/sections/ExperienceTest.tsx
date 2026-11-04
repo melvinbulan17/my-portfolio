@@ -33,7 +33,7 @@ describe("Experience", () => {
 
     expect(container.querySelector("section#experience")).toHaveClass(
       "border-t",
-      "py-32",
+      "py-24",
     );
     expect(
       screen.getByRole("heading", { level: 2, name: "Experience" }),

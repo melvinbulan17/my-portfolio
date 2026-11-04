@@ -59,7 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <SocialRail
           links={socialLinks}
-          className="fixed bottom-0 left-8 z-10"
+          className="fixed bottom-0 left-8 z-10 min-[1537px]:left-[calc((100vw-70rem)/2-4rem)]"
         />
         <Footer
           tagline={siteTagline}

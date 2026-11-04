@@ -46,9 +46,11 @@ export function Footer({
               alt=""
               width={36}
               height={36}
-              className="mb-4"
+              className="mb-4 size-9"
             />
-            <p className="max-w-[260px] text-text-on-dark-muted">{tagline}</p>
+            <p className="max-w-[16.25rem] text-text-on-dark-muted">
+              {tagline}
+            </p>
           </div>
           <Column title="Navigate">
             {navLinks.map((link) => (

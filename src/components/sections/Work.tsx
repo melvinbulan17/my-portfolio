@@ -22,7 +22,7 @@ export function Work({ projects, sideProjects }: WorkProps) {
   const visibleSideProjects = sideProjects.filter((project) => !project.hidden);
 
   return (
-    <section id="work" className="py-32 max-[760px]:py-16">
+    <section id="work" className="py-24 max-[760px]:py-16">
       <div className="wrap">
         <SectionHeading number="01." title="Selected Work" />
         <div className="grid gap-16 max-[760px]:gap-20">
@@ -35,7 +35,7 @@ export function Work({ projects, sideProjects }: WorkProps) {
           ))}
         </div>
         {visibleSideProjects.length > 0 && (
-          <div className="mt-32 max-[760px]:mt-20">
+          <div className="mt-24 max-[760px]:mt-20">
             <div className="mb-10 flex items-baseline gap-4">
               <h3 className="text-h3">Side projects</h3>
               <span

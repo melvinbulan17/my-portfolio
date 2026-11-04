@@ -38,6 +38,7 @@ export function Nav({ links, resumeHref }: NavProps) {
           alt="Home"
           width={40}
           height={40}
+          className="size-10"
           priority
         />
       </Link>

@@ -1,4 +1,4 @@
-import { act, render, screen } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
@@ -181,9 +181,9 @@ describe("ContactForm", { timeout: 20_000 }, () => {
     finish();
 
     const thanks = await screen.findByText(
-      "Thank you for sending. I’ll get back to you soon.",
+      "Thank you for sending. I’ll get back to you.",
     );
-    expect(thanks).toHaveFocus();
+    await waitFor(() => expect(thanks).toHaveFocus());
     expect(submitButton()).toBeEnabled();
     expect(field("Name")).toHaveValue("");
     expect(field("Email")).toHaveValue("");

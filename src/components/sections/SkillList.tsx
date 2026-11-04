@@ -23,7 +23,7 @@ export function SkillList({ groups }: SkillListProps) {
           <h3
             style={delay(g, 0)}
             className={cn(
-              "mb-6 text-[12px]/4 tracking-[0.16em] text-text-on-dark-muted uppercase",
+              "mb-6 text-[0.75rem]/4 tracking-[0.16em] text-text-on-dark-muted uppercase",
               riseClass,
             )}
           >
@@ -35,7 +35,7 @@ export function SkillList({ groups }: SkillListProps) {
                 key={skill.name}
                 style={delay(g, i)}
                 className={cn(
-                  "group/skill flex items-center gap-4 text-[15px]/5 text-text-on-dark",
+                  "group/skill flex items-center gap-4 text-[0.875rem]/5 text-text-on-dark",
                   riseClass,
                 )}
               >

@@ -3,7 +3,7 @@ import type { SkillIcon as SkillIconData } from "@/types/skills";
 export function SkillIcon({ icon }: { icon: SkillIconData }) {
   if (icon.set === "lucide") {
     const Glyph = icon.icon;
-    return <Glyph aria-hidden="true" size={16} strokeWidth={2} />;
+    return <Glyph aria-hidden="true" className="size-4" strokeWidth={2} />;
   }
 
   return (

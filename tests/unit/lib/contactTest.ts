@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { checks, firstName, trimValues, validate } from "@/lib/contact";
+import { checks, trimValues, validate } from "@/lib/contact";
 
 describe("contact checks", () => {
   it("needs a name", () => {
@@ -39,10 +39,9 @@ describe("contact checks", () => {
     ).toEqual({});
   });
 
-  it("trims values and picks the first name", () => {
+  it("trims values", () => {
     expect(
       trimValues({ name: " Sam Cruz ", email: " a@b.co ", message: " hi " }),
     ).toEqual({ name: "Sam Cruz", email: "a@b.co", message: "hi" });
-    expect(firstName("  Sam   Cruz ")).toBe("Sam");
   });
 });

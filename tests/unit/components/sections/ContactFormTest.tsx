@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
@@ -156,7 +156,7 @@ describe("ContactForm", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("shows the sending state, then the sent message with focus", async () => {
+  it("shows the sending state, then thanks and an empty form", async () => {
     const user = userEvent.setup();
     let finish = () => {};
     const onSubmit = vi.fn(
@@ -180,12 +180,27 @@ describe("ContactForm", () => {
 
     finish();
 
-    await waitFor(() => expect(screen.getByText("200 OK")).toBeInTheDocument());
-    expect(
-      screen.getByText("Thanks, Sam. I’ll reply to sam@company.com."),
-    ).toBeInTheDocument();
-    expect(screen.getByText("200 OK").closest("[tabindex]")).toHaveFocus();
-    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    const thanks = await screen.findByText(
+      "Thank you for sending. I’ll get back to you soon.",
+    );
+    expect(thanks).toHaveFocus();
+    expect(submitButton()).toBeEnabled();
+    expect(field("Name")).toHaveValue("");
+    expect(field("Email")).toHaveValue("");
+    expect(field("Message")).toHaveValue("");
+    expect(field("Name")).not.toHaveAttribute("aria-invalid");
+  });
+
+  it("removes the thanks when a new message is started", async () => {
+    const user = userEvent.setup();
+    render(<ContactForm onSubmit={vi.fn().mockResolvedValue(undefined)} />);
+    await fill(user);
+    await user.click(submitButton());
+    await screen.findByText(/Thank you for sending/);
+
+    await user.type(field("Name"), "A");
+
+    expect(screen.queryByText(/Thank you for sending/)).not.toBeInTheDocument();
   });
 
   it("shows the failed state and keeps what was typed", async () => {
@@ -222,7 +237,9 @@ describe("ContactForm", () => {
     if (trap) trap.value = "spam.example";
     await user.click(submitButton());
 
-    expect(await screen.findByText("200 OK")).toBeInTheDocument();
+    expect(
+      await screen.findByText(/Thank you for sending/),
+    ).toBeInTheDocument();
     expect(onSubmit).not.toHaveBeenCalled();
   });
 });

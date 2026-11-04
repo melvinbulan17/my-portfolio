@@ -4,12 +4,7 @@ import { type FormEvent, useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { contactCopy, contactFields } from "@/content/contact";
-import {
-  checks,
-  contactFieldNames,
-  firstName,
-  trimValues,
-} from "@/lib/contact";
+import { checks, contactFieldNames, trimValues } from "@/lib/contact";
 import { send } from "@/lib/send";
 import type {
   ContactField,
@@ -31,16 +26,15 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
   const [values, setValues] = useState(empty);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [status, setStatus] = useState<ContactFormStatus>("idle");
-  const [sentTo, setSentTo] = useState(empty);
   const fieldRefs = useRef<
     Partial<Record<ContactField, HTMLInputElement | HTMLTextAreaElement>>
   >({});
   const touched = useRef(new Set<ContactField>());
   const trapRef = useRef<HTMLInputElement>(null);
-  const sentRef = useRef<HTMLDivElement>(null);
+  const statusRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (status === "sent") sentRef.current?.focus();
+    if (status === "sent") statusRef.current?.focus();
   }, [status]);
 
   function mark(field: ContactField, value: string) {
@@ -52,6 +46,7 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
   function change(field: ContactField, value: string) {
     setValues((current) => ({ ...current, [field]: value }));
     touched.current.add(field);
+    if (status === "sent") setStatus("idle");
     if (errors[field]) mark(field, value);
   }
 
@@ -71,34 +66,17 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
     setStatus("sending");
     try {
       if (!trapRef.current?.value) await onSubmit(clean);
-      setSentTo(clean);
+      setValues(empty);
+      touched.current.clear();
       setStatus("sent");
     } catch {
       setStatus("failed");
     }
   }
 
-  if (status === "sent") {
-    return (
-      <div
-        ref={sentRef}
-        role="status"
-        tabIndex={-1}
-        className="grid gap-2 border border-line-dark bg-surface-800 p-8 [--at:0] motion-safe:translate-y-1 motion-safe:animate-land motion-safe:opacity-0"
-      >
-        <p>
-          <b className="text-accent-bright">{contactCopy.sentCode}</b>{" "}
-          {contactCopy.sentLine}
-        </p>
-        <p className="text-text-on-dark-muted">
-          {contactCopy.thanks(firstName(sentTo.name), sentTo.email)}
-        </p>
-      </div>
-    );
-  }
-
   const sending = status === "sending";
   const failed = status === "failed";
+  const sent = status === "sent";
 
   return (
     <form className="grid gap-6" noValidate onSubmit={submit}>
@@ -184,19 +162,25 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
           {sending ? contactCopy.sending : contactCopy.submit}
         </Button>
         <p
+          ref={statusRef}
           role="status"
           aria-live="polite"
+          tabIndex={-1}
           className={
             failed
               ? "text-eyebrow text-accent-bright before:content-['//_error:_']"
-              : "text-eyebrow text-text-on-dark-muted"
+              : sent
+                ? "text-eyebrow text-text-on-dark"
+                : "text-eyebrow text-text-on-dark-muted"
           }
         >
           {sending
             ? contactCopy.sendingStatus
             : failed
               ? contactCopy.failed
-              : null}
+              : sent
+                ? contactCopy.thanks
+                : null}
         </p>
       </div>
     </form>

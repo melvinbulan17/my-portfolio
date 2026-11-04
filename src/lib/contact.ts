@@ -32,7 +32,3 @@ export function trimValues(values: ContactFormValues): ContactFormValues {
     message: values.message.trim(),
   };
 }
-
-export function firstName(name: string) {
-  return name.trim().split(/\s+/)[0];
-}

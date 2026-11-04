@@ -46,7 +46,7 @@ export const contactCopy = {
   submit: "Send message",
   sending: "Sending…",
   sendingStatus: "Sending your message.",
-  failed: "couldn’t send. Try again, or use LinkedIn in the footer.",
+  failed: "couldn’t send. Try again, or contact me via my LinkedIn.",
   thanks: "Thank you for sending. I’ll get back to you soon.",
   honeypot: "Leave this field empty",
 };

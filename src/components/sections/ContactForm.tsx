@@ -22,6 +22,8 @@ const fieldClass =
 
 const empty: ContactFormValues = { name: "", email: "", message: "" };
 
+const thanksDuration = 8000;
+
 export function ContactForm({ onSubmit = send }: ContactFormProps) {
   const [values, setValues] = useState(empty);
   const [errors, setErrors] = useState<ContactFormErrors>({});
@@ -34,7 +36,10 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
   const statusRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (status === "sent") statusRef.current?.focus();
+    if (status !== "sent") return;
+    statusRef.current?.focus();
+    const timer = setTimeout(() => setStatus("idle"), thanksDuration);
+    return () => clearTimeout(timer);
   }, [status]);
 
   function mark(field: ContactField, value: string) {
@@ -58,6 +63,7 @@ export function ContactForm({ onSubmit = send }: ContactFormProps) {
       (field) => !mark(field, values[field]),
     );
     if (bad.length > 0) {
+      setStatus("idle");
       fieldRefs.current[bad[0]]?.focus();
       return;
     }

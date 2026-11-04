@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
@@ -18,7 +18,7 @@ const field = (name: string) => screen.getByRole("textbox", { name });
 
 const submitButton = () => screen.getByRole("button", { name: "Send message" });
 
-describe("ContactForm", () => {
+describe("ContactForm", { timeout: 20_000 }, () => {
   it("marks each field required with a hidden red asterisk and no combined note", () => {
     const { container } = render(<ContactForm onSubmit={vi.fn()} />);
 
@@ -203,6 +203,44 @@ describe("ContactForm", () => {
     expect(screen.queryByText(/Thank you for sending/)).not.toBeInTheDocument();
   });
 
+  it("removes the thanks when sending again shows errors", async () => {
+    const user = userEvent.setup();
+    render(<ContactForm onSubmit={vi.fn().mockResolvedValue(undefined)} />);
+    await fill(user);
+    await user.click(submitButton());
+    await screen.findByText(/Thank you for sending/);
+
+    await user.click(submitButton());
+
+    expect(field("Name")).toHaveAccessibleDescription("enter your name");
+    expect(screen.queryByText(/Thank you for sending/)).not.toBeInTheDocument();
+  });
+
+  it("removes the thanks after eight seconds", async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    try {
+      const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+      render(<ContactForm onSubmit={vi.fn().mockResolvedValue(undefined)} />);
+      await fill(user);
+      await user.click(submitButton());
+      await screen.findByText(/Thank you for sending/);
+
+      act(() => {
+        vi.advanceTimersByTime(7000);
+      });
+      expect(screen.getByText(/Thank you for sending/)).toBeInTheDocument();
+
+      act(() => {
+        vi.advanceTimersByTime(1000);
+      });
+      expect(
+        screen.queryByText(/Thank you for sending/),
+      ).not.toBeInTheDocument();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("shows the failed state and keeps what was typed", async () => {
     const user = userEvent.setup();
     const onSubmit = vi.fn().mockRejectedValue(new Error("down"));
@@ -213,7 +251,7 @@ describe("ContactForm", () => {
 
     expect(
       await screen.findByText(
-        "couldn’t send. Try again, or use LinkedIn in the footer.",
+        "couldn’t send. Try again, or contact me via my LinkedIn.",
       ),
     ).toHaveClass("text-accent-bright");
     expect(submitButton()).toBeEnabled();

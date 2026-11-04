@@ -97,7 +97,7 @@ describe("Experience", () => {
       where: "Cebu, Philippines · On-site",
       current: true,
     });
-    expect(experience[0].description).toContain("project manager");
+    expect(experience[0].description).toContain("Project manager");
   });
 
   it("joins a star for every job with a line hidden from readers", () => {

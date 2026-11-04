@@ -8,19 +8,16 @@ import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TextLink } from "@/components/ui/TextLink";
 import { cn } from "@/lib/cn";
+import { arrive, drawLine } from "@/lib/motion";
 import type {
   CaseStudy as CaseStudyContent,
   CaseStudyBlock,
 } from "@/types/site";
 
-const arrive =
-  "motion-safe:group-data-[stage=armed]/rise:translate-y-6 motion-safe:group-data-[stage=armed]/rise:opacity-0 motion-safe:group-data-[stage=in]/rise:transition-[opacity,translate] motion-safe:group-data-[stage=in]/rise:duration-700 motion-safe:group-data-[stage=in]/rise:ease-out-expo motion-safe:group-data-[stage=in]/rise:delay-(--rise-delay)";
 const settle =
   "motion-safe:group-data-[stage=armed]/rise:scale-[0.97] motion-safe:group-data-[stage=armed]/rise:opacity-0 motion-safe:group-data-[stage=in]/rise:transition-[opacity,scale] motion-safe:group-data-[stage=in]/rise:duration-900 motion-safe:group-data-[stage=in]/rise:ease-out-expo motion-safe:group-data-[stage=in]/rise:delay-(--rise-delay)";
 const unroll =
   "motion-safe:group-data-[stage=armed]/rise:[clip-path:inset(0_0_100%_0)] motion-safe:group-data-[stage=in]/rise:[clip-path:inset(0_0_0_0)] motion-safe:group-data-[stage=in]/rise:transition-[clip-path] motion-safe:group-data-[stage=in]/rise:duration-1200 motion-safe:group-data-[stage=in]/rise:ease-[cubic-bezier(0.65,0,0.35,1)]";
-const drawLine =
-  "origin-left motion-safe:group-data-[stage=armed]/rise:scale-x-0 motion-safe:group-data-[stage=in]/rise:transition-[scale] motion-safe:group-data-[stage=in]/rise:delay-150 motion-safe:group-data-[stage=in]/rise:duration-900 motion-safe:group-data-[stage=in]/rise:ease-out-expo";
 const bullets = "grid list-disc gap-3 pl-5 marker:text-accent-bright";
 const row = "border-b border-line-dark py-3";
 

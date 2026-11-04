@@ -51,8 +51,8 @@ export const hero = {
 };
 
 export const terminalLines: TerminalLine[] = [
-  { kind: "cmd", text: "whoami" },
-  { kind: "out", text: "software-engineer, project-manager" },
+  { kind: "cmd", text: "uname -a" },
+  { kind: "out", text: "digital portfolio v1.0.0" },
   { kind: "gap" },
   { kind: "cmd", text: "openssl verify -CAfile root.pem career.crt" },
   {

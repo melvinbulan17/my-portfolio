@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { Experience } from "@/components/sections/Experience";
@@ -10,10 +10,7 @@ const jobs: ExperienceJob[] = [
     title: "Software Engineer",
     company: "Current Co",
     current: true,
-    steps: [
-      { title: "Project Manager", current: true },
-      { title: "QA Engineer" },
-    ],
+    description: "I run the project and test the product.",
   },
   {
     when: "Jul 2022 – Sep 2022",
@@ -21,7 +18,6 @@ const jobs: ExperienceJob[] = [
     title: "Developer",
     company: "Intern Co",
     internship: true,
-    steps: [],
   },
 ];
 
@@ -51,14 +47,13 @@ describe("Experience", () => {
       title: `Role ${index + 1}`,
       company: `Company ${index + 1}`,
       current: index === 0,
-      steps: [],
     }));
     const { container } = render(
       <Experience jobs={many} resumeHref="/resume.pdf" />,
     );
 
     expect(
-      container.querySelectorAll("section#experience > div > ol"),
+      container.querySelectorAll("section#experience [data-stage] > ol"),
     ).toHaveLength(1);
     expect(
       screen
@@ -67,14 +62,16 @@ describe("Experience", () => {
     ).toEqual(many.map((job) => job.title));
   });
 
-  it("lists the roles held and marks the current one as now", () => {
-    render(<Experience jobs={jobs} resumeHref="/resume.pdf" />);
+  it("shows a description only for jobs that have one", () => {
+    const { container } = render(
+      <Experience jobs={jobs} resumeHref="/resume.pdf" />,
+    );
 
-    const current = screen.getByText("Project Manager").closest("li");
-    expect(current).not.toBeNull();
-    expect(within(current!).getByText("now")).toBeInTheDocument();
-    expect(screen.getByText("QA Engineer")).toBeInTheDocument();
-    expect(screen.getAllByText("now")).toHaveLength(1);
+    expect(
+      screen.getByText("I run the project and test the product."),
+    ).toBeInTheDocument();
+    const [, intern] = container.querySelectorAll("li");
+    expect(intern.querySelectorAll("p")).toHaveLength(1);
   });
 
   it("shows the place and labels internships", () => {
@@ -99,10 +96,20 @@ describe("Experience", () => {
       title: "Software Engineer",
       where: "Cebu, Philippines · On-site",
       current: true,
-      steps: [
-        { title: "Project Manager", current: true },
-        { title: "QA Engineer" },
-      ],
     });
+    expect(experience[0].description).toContain("project manager");
+  });
+
+  it("joins a star for every job with a line hidden from readers", () => {
+    const { container } = render(
+      <Experience jobs={experience} resumeHref="/resume.pdf" />,
+    );
+
+    expect(container.querySelectorAll("[data-star]")).toHaveLength(
+      experience.length,
+    );
+    const line = container.querySelector("svg");
+    expect(line).toHaveAttribute("aria-hidden", "true");
+    expect(line?.querySelector("path")?.getAttribute("d")).toMatch(/^M.+L/);
   });
 });

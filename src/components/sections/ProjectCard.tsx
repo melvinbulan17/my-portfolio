@@ -2,12 +2,12 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
-import { RiseIn, riseClass } from "@/components/sections/RiseIn";
+import { RiseIn } from "@/components/sections/RiseIn";
 import { Button } from "@/components/ui/Button";
 import { TagList } from "@/components/ui/Tag";
 import { TextLink } from "@/components/ui/TextLink";
 import { cn } from "@/lib/cn";
-import { cardTextDelay } from "@/lib/motion";
+import { cardTextDelay, riseClass } from "@/lib/motion";
 import type { Project } from "@/types/site";
 
 export type ProjectCardProps = Project & {

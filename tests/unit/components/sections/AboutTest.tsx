@@ -67,8 +67,9 @@ describe("About", () => {
     ).toEqual([
       "software test engineer",
       "test manager",
+      "software engineer",
       "project manager",
-      "PKI (public key infrastructure)",
+      "public key infrastructure (PKI)",
     ]);
   });
 });

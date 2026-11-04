@@ -1,9 +1,9 @@
 import type { CSSProperties } from "react";
 
-import { RiseIn, riseClass } from "@/components/sections/RiseIn";
+import { RiseIn } from "@/components/sections/RiseIn";
 import { SkillIcon } from "@/components/sections/SkillIcon";
 import { cn } from "@/lib/cn";
-import { skillDelay } from "@/lib/motion";
+import { riseClass, skillDelay } from "@/lib/motion";
 import type { SkillGroup } from "@/types/skills";
 
 export type SkillListProps = {
@@ -17,19 +17,16 @@ const delay = (group: number, index: number) =>
 
 export function SkillList({ groups }: SkillListProps) {
   return (
-    <RiseIn className="grid grid-cols-3 gap-x-8 gap-y-16 max-[1000px]:grid-cols-2 max-[480px]:grid-cols-1 max-[480px]:gap-8">
+    <RiseIn className="grid gap-12">
       {groups.map((group, g) => (
-        <div key={group.label}>
-          <h3
-            style={delay(g, 0)}
-            className={cn(
-              "mb-6 text-[0.75rem]/4 tracking-[0.16em] text-text-on-dark-muted uppercase",
-              riseClass,
-            )}
-          >
+        <div
+          key={group.label}
+          className="grid grid-cols-[13rem_1fr] gap-8 max-[760px]:grid-cols-1 max-[760px]:gap-5"
+        >
+          <h3 style={delay(g, 0)} className={cn("text-h3", riseClass)}>
             {group.label}
           </h3>
-          <ul className="grid gap-4">
+          <ul className="grid grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] gap-x-6 gap-y-4">
             {group.skills.map((skill, i) => (
               <li
                 key={skill.name}

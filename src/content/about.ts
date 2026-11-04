@@ -21,17 +21,19 @@ export const about: AboutContent = {
       " for version-ups of existing products, writing the test plans and running the full test cycle.",
     ],
     [
-      "I then joined a startup as a software engineer, hired as its main tester. There was no testing process yet, so I built one that follows ISTQB standards: the documents, test case specifications, templates and reports.",
+      "I then joined a startup as a ",
+      { strong: "software engineer" },
+      ", hired as its main tester. There was no testing process yet, so I built one that follows ISTQB standards: the documents, test case specifications, templates and reports.",
     ],
     [
       "A few months in, I became ",
       { strong: "project manager" },
       " of a new ",
-      { strong: "PKI (public key infrastructure)" },
+      { strong: "public key infrastructure (PKI)" },
       " web application. PKI is the system behind digital certificates, which prove that a website, device or person is who they claim to be.",
     ],
     [
-      "I set up the project's structure, YouTrack boards and knowledge bases, run sprint meetings and retros, and keep stakeholders updated. I still test, mostly manually with some automation, and help with the code from time to time, so I've seen every step from planning to release.",
+      "I set up the project's structure, YouTrack boards and knowledge bases, run sprint meetings and retros, and keep stakeholders updated. I still test, mostly manually with some automation, and help with bug fixes and feature implementations, so I've seen every step from planning to release.",
     ],
   ],
   glanceTitle: "// right now",

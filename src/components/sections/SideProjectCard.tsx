@@ -1,11 +1,11 @@
 import { ArrowUpRight } from "lucide-react";
 import type { CSSProperties } from "react";
 
-import { riseClass } from "@/components/sections/RiseIn";
 import { Button } from "@/components/ui/Button";
 import { TagList } from "@/components/ui/Tag";
 import { TextLink } from "@/components/ui/TextLink";
 import { cn } from "@/lib/cn";
+import { riseClass } from "@/lib/motion";
 import type { SideProject } from "@/types/site";
 
 export type SideProjectCardProps = SideProject & {

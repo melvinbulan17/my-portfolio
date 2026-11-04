@@ -1,9 +1,9 @@
 import type { CSSProperties } from "react";
 
 import { ProjectCard } from "@/components/sections/ProjectCard";
+import { RevealHeading } from "@/components/sections/RevealHeading";
 import { RiseIn } from "@/components/sections/RiseIn";
 import { SideProjectCard } from "@/components/sections/SideProjectCard";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { sideProjectDelay } from "@/lib/motion";
 import type { Project, SideProject } from "@/types/site";
 
@@ -24,7 +24,7 @@ export function Work({ projects, sideProjects }: WorkProps) {
   return (
     <section id="work" className="py-24 max-[760px]:py-16">
       <div className="wrap">
-        <SectionHeading number="01." title="Selected Work" />
+        <RevealHeading number="01." title="Selected Work" />
         <div className="grid gap-16 max-[760px]:gap-20">
           {visibleProjects.map((project, index) => (
             <ProjectCard

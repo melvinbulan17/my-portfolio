@@ -1,6 +1,5 @@
 import {
   BadgeCheck,
-  Bot,
   CalendarSync,
   ChartGantt,
   ClipboardCheck,
@@ -18,6 +17,7 @@ import {
 } from "lucide-react";
 import {
   type SimpleIcon,
+  siAppium,
   siConfluence,
   siGitea,
   siGithub,
@@ -62,10 +62,10 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       glyph("Test management", ClipboardCheck),
       glyph("Manual testing", MousePointerClick),
-      glyph("API testing", Bot),
       logo("Postman", siPostman),
       logo("Swagger", siSwagger),
       logo("Selenium", siSelenium),
+      logo("Appium", siAppium),
     ],
   },
   {

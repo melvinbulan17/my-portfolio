@@ -7,8 +7,6 @@ const dummio: CaseStudy = {
   description:
     "How I planned, built, tested and released Dummio, a browser extension that fills web forms with realistic test data.",
   liveHref: "https://dummio.vercel.app/",
-  storeHref:
-    "https://chromewebstore.google.com/detail/dummio/ajpljdboafipblchifcpgnmjhdpilopb",
   codeHref: "https://github.com/melvinbulan17/dummio",
   heroImage: {
     src: "/images/dummio/popup-after-fill.png",
@@ -251,7 +249,7 @@ const dummio: CaseStudy = {
         {
           kind: "topic",
           title: "Results",
-          text: "Dummio is published on the Chrome Web Store, with its own website and public code. The Firefox listing is waiting on Mozilla's review.",
+          text: "Dummio is published on the Chrome Web Store and Firefox Add-ons, with its own website and public code.",
         },
         {
           kind: "topic",

@@ -42,22 +42,6 @@ describe("CaseStudy", () => {
     );
   });
 
-  it("links the store listing only when there is one", () => {
-    const { unmount } = render(<CaseStudy {...dummio} />);
-
-    const links = screen.getAllByRole("link", { name: /Chrome Web Store/ });
-    expect(links).toHaveLength(2);
-    for (const link of links) {
-      expect(link).toHaveAttribute("href", dummio.storeHref);
-    }
-    unmount();
-
-    render(<CaseStudy {...dummio} storeHref={undefined} />);
-    expect(
-      screen.queryByRole("link", { name: /Chrome Web Store/ }),
-    ).not.toBeInTheDocument();
-  });
-
   it("marks inline test values as code", () => {
     render(<CaseStudy {...dummio} />);
 

@@ -23,7 +23,7 @@ export const about: AboutContent = {
     [
       "I then joined a startup as a ",
       { strong: "software engineer" },
-      ", hired as its main tester. There was no testing process yet, so I built one that follows ISTQB standards: the documents, test case specifications, templates and reports.",
+      ", hired as its main tester. There was no testing process yet, so I built one based on ISTQB practices: the documents, test case specifications, templates and reports.",
     ],
     [
       "A few months in, I became ",

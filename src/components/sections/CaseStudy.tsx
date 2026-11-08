@@ -160,6 +160,12 @@ function Block({ block }: { block: CaseStudyBlock }) {
               className="min-w-150"
             />
           </div>
+          <p
+            aria-hidden="true"
+            className="mt-2 text-[0.75rem] text-text-on-dark-muted min-[641px]:hidden"
+          >
+            Scroll sideways to see the whole diagram →
+          </p>
         </RiseIn>
       );
   }
@@ -169,7 +175,6 @@ export function CaseStudy({
   title,
   tagline,
   liveHref,
-  storeHref,
   codeHref,
   heroImage,
   sections,
@@ -208,11 +213,6 @@ export function CaseStudy({
             className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 motion-safe:animate-rise-in"
           >
             {liveHref && <Button href={liveHref}>Live site</Button>}
-            {storeHref && (
-              <TextLink href={storeHref}>
-                <Outbound>Chrome Web Store</Outbound>
-              </TextLink>
-            )}
             <TextLink href={codeHref}>
               <Outbound>Code</Outbound>
             </TextLink>
@@ -275,11 +275,6 @@ export function CaseStudy({
             {liveHref && (
               <TextLink href={liveHref}>
                 <Outbound>Live site</Outbound>
-              </TextLink>
-            )}
-            {storeHref && (
-              <TextLink href={storeHref}>
-                <Outbound>Chrome Web Store</Outbound>
               </TextLink>
             )}
             <TextLink href={codeHref}>

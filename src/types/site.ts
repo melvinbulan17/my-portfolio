@@ -57,5 +57,13 @@ export type CaseStudy = {
   liveHref?: string;
   codeHref: string;
   heroImage: CaseStudyImage;
-  sections: { id: string; title: string; blocks: CaseStudyBlock[] }[];
+  sections: {
+    overview: CaseStudyBlock[];
+    problem?: CaseStudyBlock[];
+    approach?: CaseStudyBlock[];
+    implementation?: CaseStudyBlock[];
+    challenges?: CaseStudyBlock[];
+    testing?: CaseStudyBlock[];
+    outcome: CaseStudyBlock[];
+  };
 };

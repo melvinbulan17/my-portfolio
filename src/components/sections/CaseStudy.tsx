@@ -7,6 +7,7 @@ import { RiseIn } from "@/components/sections/RiseIn";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TextLink } from "@/components/ui/TextLink";
+import { sectionsOf } from "@/lib/caseStudy";
 import { cn } from "@/lib/cn";
 import { arrive, drawLine } from "@/lib/motion";
 import type {
@@ -171,14 +172,9 @@ function Block({ block }: { block: CaseStudyBlock }) {
   }
 }
 
-export function CaseStudy({
-  title,
-  tagline,
-  liveHref,
-  codeHref,
-  heroImage,
-  sections,
-}: CaseStudyContent) {
+export function CaseStudy(study: CaseStudyContent) {
+  const { title, tagline, liveHref, codeHref, heroImage } = study;
+  const sections = sectionsOf(study);
   const wideHero = heroImage.width > heroImage.height;
 
   return (
